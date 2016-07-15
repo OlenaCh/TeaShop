@@ -17,16 +17,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  # def create
-  #   @user = User.new(params[:user])
-  #   if @user.save
-  #   #  @user.send_activation_email
-  #   #  flash[:info] = "Please check your email to activate your account."
-  #     redirect_to root_path
-  #   else
-  #     render 'new'
-  #   end
-  # end
+  def create
+    @user = User.new(user_params)
+    if @user.save
+    #  @user.send_activation_email
+    #  flash[:info] = "Please check your email to activate your account."
+      redirect_to root_path
+    else
+      render 'new'
+    end
+  end
   
 #  def edit
 #   @user = User.find(params[:id])
@@ -62,12 +62,12 @@ class UsersController < ApplicationController
   #   render 'show_follow'
   # end
 
-  # private
+  private
 
-  #   def user_params
-  #     params.require(:user).permit(:name, :email, :password,
-  #                                 :password_confirmation)
-  #   end
+    def user_params
+      params.require(:user).permit(:name, :email, :password,
+                                  :password_confirmation)
+    end
     
   #   # Confirms the correct user.
   #   def correct_user
