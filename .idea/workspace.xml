@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="07614fbb-9722-4e79-a7bb-e40c7584ba16" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile.lock" afterPath="$PROJECT_DIR$/Gemfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="teashop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -456,12 +453,20 @@
       <workItem from="1468582460844" duration="1825000" />
       <workItem from="1468584374107" duration="104000" />
       <workItem from="1468586234536" duration="14000" />
-      <workItem from="1468586249644" duration="1765000" />
+      <workItem from="1468586249644" duration="1848000" />
     </task>
+    <task id="LOCAL-00001" summary="Validations">
+      <created>1468588028258</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1468588028258</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3708000" />
+    <option name="totallyTimeSpent" value="3791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="64" width="1293" height="704" extended-state="0" />
@@ -497,6 +502,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Validations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Validations" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
