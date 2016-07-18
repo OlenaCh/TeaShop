@@ -4,10 +4,9 @@ class UsersController < ApplicationController
 #  before_action :correct_user,   only: [:edit, :update]
 #  before_action :admin_user,     only: :destroy
   
-#  def show
-#    @user = User.find(params[:id])
-#    @microposts = @user.microposts.paginate(page: params[:page])
-#  end
+  def show
+    @user = User.find(params[:id])
+  end
   
 #  def index
 #    @users = User.paginate(page: params[:page])
@@ -22,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
     #  @user.send_activation_email
     #  flash[:info] = "Please check your email to activate your account."
-      redirect_to root_path
+      redirect_to @user
     else
       render 'new'
     end
