@@ -74,11 +74,7 @@ class UsersController < ApplicationController
   #   render 'show_follow'
   # end
 
-  resources :users do
-    member do
-      get :confirm_email
-    end
-  end
+
 
   private
 
