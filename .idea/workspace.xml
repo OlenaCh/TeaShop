@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07614fbb-9722-4e79-a7bb-e40c7584ba16" name="Default" comment="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;app/controllers/users_controller.rb&#10;">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/mailers/user_mailer.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/controllers/mailers/user_mailer.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/teashop.iml" afterPath="$PROJECT_DIR$/.idea/teashop.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    <list default="true" id="07614fbb-9722-4e79-a7bb-e40c7584ba16" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/test.rb" afterPath="$PROJECT_DIR$/config/environments/test.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="teashop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,7 +33,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
               <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1468848799852" expanded="true" signature="306:347" ph=" ... end" />
+                <marker date="1468848799852" expanded="true" signature="351:419" ph="##..." />
+                <marker date="1468848799852" expanded="true" signature="430:457" ph=" ... end" />
+                <marker date="1468848799852" expanded="true" signature="473:778" ph=" ... end" />
+                <marker date="1468848799852" expanded="true" signature="512:772" ph="if ... end" />
+                <marker date="1468848799852" expanded="true" signature="799:1007" ph=" ... end" />
+                <marker date="1468848799852" expanded="true" signature="855:1007" ph="if ... end" />
+                <marker date="1468848799852" expanded="true" signature="1927:2024" ph=" ... end" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,8 +60,8 @@
       <file leaf-file-name="user_mailer.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -680,7 +680,7 @@
       <workItem from="1468586234536" duration="14000" />
       <workItem from="1468586249644" duration="9385000" />
       <workItem from="1468833753932" duration="6973000" />
-      <workItem from="1468845207305" duration="3509000" />
+      <workItem from="1468845207305" duration="3633000" />
     </task>
     <task id="LOCAL-00001" summary="Validations">
       <created>1468588028258</created>
@@ -731,11 +731,18 @@
       <option name="project" value="LOCAL" />
       <updated>1468845537684</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;app/controllers/users_controller.rb&#10;">
+      <created>1468848724617</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1468848724617</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21810000" />
+    <option name="totallyTimeSpent" value="21934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="64" width="1293" height="704" extended-state="0" />
@@ -746,7 +753,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -778,7 +785,8 @@
     <MESSAGE value="SignUpErrors1" />
     <MESSAGE value="SignUpImproved" />
     <MESSAGE value="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;app/controllers/users_controller.rb&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;&#9;app/controllers/users_controller.rb&#10;" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;app/controllers/users_controller.rb&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/OlenaCh/TeaShop&#10;&#10;Conflicts:&#10;&#9;app/controllers/users_controller.rb&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -789,7 +797,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding />
+          <folding>
+            <marker date="1468848799852" expanded="true" signature="306:347" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="351:419" ph="##..." />
+            <marker date="1468848799852" expanded="true" signature="430:457" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="473:778" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="512:772" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="799:1007" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="855:1007" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="1927:2024" ph=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -813,7 +830,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="18" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1468848799852" expanded="true" signature="306:347" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="351:419" ph="##..." />
+            <marker date="1468848799852" expanded="true" signature="430:457" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="473:778" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="512:772" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="799:1007" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="855:1007" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="1927:2024" ph=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -927,7 +953,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1468848799852" expanded="true" signature="306:347" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="351:419" ph="##..." />
+            <marker date="1468848799852" expanded="true" signature="430:457" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="473:778" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="512:772" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="799:1007" ph=" ... end" />
+            <marker date="1468848799852" expanded="true" signature="855:1007" ph="if ... end" />
+            <marker date="1468848799852" expanded="true" signature="1927:2024" ph=" ... end" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -997,8 +1032,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/user_mailer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
           <folding />
         </state>
       </provider>
