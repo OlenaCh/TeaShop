@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   def email_activate
     self.activated = true
     self.confirm_token = nil
-    save!(:validate => false)
+  end
+
+  def authenticate user_params
+
   end
 
   private

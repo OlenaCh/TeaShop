@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     if user
       user.email_activate
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed. Please sign in to continue."
-      #redirect_to sign_in_path
+      redirect_to log_in_path
     else
       flash[:error] = "Sorry. User does not exist"
       redirect_to root_url
@@ -59,22 +59,6 @@ class UsersController < ApplicationController
   #   flash[:success] = "User deleted"
   #   redirect_to users_url
   # end
-  
-  # def following
-  #   @title = "Following"
-  #   @user  = User.find(params[:id])
-  #   @users = @user.following.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
-
-  # def followers
-  #   @title = "Followers"
-  #   @user  = User.find(params[:id])
-  #   @users = @user.followers.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
-
-
 
   private
 
