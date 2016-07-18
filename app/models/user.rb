@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_create :confirmation_token
   before_save { self.email = email.downcase }
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -16,4 +17,18 @@ class User < ActiveRecord::Base
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  def email_activate
+    self.activated = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
+  private
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
 end
