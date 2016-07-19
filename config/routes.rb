@@ -6,9 +6,5 @@ Rails.application.routes.draw do
 
   root to: 'welcome_page#home'
 
-  resources :users # do
-  #   member do
-  #     get :confirm_email
-  #   end
-  # end
+  resources :users
 end

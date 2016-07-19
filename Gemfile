@@ -11,12 +11,23 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-group :development, :test do
-  gem 'byebug'
-end
-
 group :development do
   gem 'web-console', '~> 2.0'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+  gem 'byebug'
+  gem 'database_cleaner', '1.4.1'
+  gem 'capybara', '2.4.4'
+  gem 'launchy'
+  gem 'rspec-rails', '3.3.2'
+  gem 'ZenTest', '4.11.0'
+  gem "factory_girl_rails", "~> 4.0"
+end
+
+group :test do
   gem 'spring'
+  gem 'simplecov', :require => false
 end
 
