@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   get 'sign_up' => 'users#new'
   get 'log_in' => 'sessions#new'
   post 'log_in' => 'sessions#create'
+  delete 'log_out' => 'sessions#destroy'
 
   root to: 'welcome_page#home'
 
-  resources :users do
-    member do
-      get :confirm_email
-    end
-  end
+  resources :users # do
+  #   member do
+  #     get :confirm_email
+  #   end
+  # end
 end

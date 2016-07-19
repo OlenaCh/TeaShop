@@ -1,6 +1,5 @@
 class UserMailer < ActionMailer::Base
-  #add real mailer here
-  default :from => "me@mydomain.com"
+  default from: "noreply@example.com" #add real mailer here
 
   def registration_confirmation(user)
     @user = user
