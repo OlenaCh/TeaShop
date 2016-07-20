@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+/.ruby-version
+/.ruby-gemset
+/.rvmrc
+/.idea
+/config/database.yml

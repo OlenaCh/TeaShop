@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  
-  describe '#show' do
-    
-    it 'redirects to user page' do
+
+  describe 'GET show' do
+    it 'should show user' do
       user = FactoryGirl.create :user
-      get :show, id: user.id
-      expect(response).to render_template(:show)
+      # User.should_receive(:find).with(user.id)
+      expect(User).to receive(:find).with(user.id)
+      get :show, { id: user.id, template: 'users/show' }
+      expect(response.response_code).to == 200
     end
   end
   
