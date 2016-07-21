@@ -18,7 +18,7 @@
         1,
         null,
         1,
-        1,
+        2,
         null,
         null,
         null,
@@ -201,7 +201,7 @@
       ],
       "/home/olena/TeaShop/app/models/user.rb": [
         1,
-        9,
+        11,
         null,
         1,
         1,
@@ -232,6 +232,6 @@
         0
       ]
     },
-    "timestamp": 1469112470
+    "timestamp": 1469113731
   }
 }

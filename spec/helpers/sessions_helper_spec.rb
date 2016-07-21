@@ -1,10 +1,18 @@
 require 'spec_helper'
 
 describe SessionsHelper do
-  # describe "#full_title" do
-  #   it "returns the instance variable" do
-  #     expect(helper.full_title("My Title")).to match(/TeaShop | My Title/)
-  #     expect(helper.full_title("")).to match(/TeaShop/)
-  #   end
-  # end
+  let! (:user) { user = FactoryGirl.create :user }
+
+  describe "#login" do
+    it "creates a session for a new user" do
+      helper.log_in(user)
+      expect(session[:user_id]).to eq(user.id)
+    end
+  end
+
+  describe "#current_user" do
+    it "assigns a current user" do
+      #
+    end
+  end
 end
