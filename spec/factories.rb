@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :user do
     name "Iryna Homlyak"
     zip_code "79005"
@@ -8,5 +7,4 @@ FactoryGirl.define do
     email "irina_hom@ukr.net"
     password "800000"
   end
-
 end

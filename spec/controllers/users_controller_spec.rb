@@ -1,70 +1,55 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-
   describe 'GET show' do
-    it 'should show user' do
+    let! (:user) {
       user = FactoryGirl.create :user
-      # User.should_receive(:find).with(user.id)
-      expect(User).to receive(:find).with(user.id)
-      get :show, { id: user.id, template: 'users/show' }
-      expect(response.response_code).to == 200
+    }
+
+    it 'calls the model method that performs search' do
+      expect(User).to receive(:find).with("#{user.id}")
+      get :show, id: user.id
+    end
+
+    it 'selects the correct template to render' do
+      User.stub(:find, id: user.id)
+      get :show, id: user.id
+      expect(response).to render_template('users/show')
     end
   end
-  
-  # describe '#search_directors' do
-  #   let!(:movies) {  Movie.create([
-  #         { title: 'Star Wars',    rating: 'PG',
-  #           director: 'George Lucas', release_date: '1977-05-25' },
-  #         { title: 'Blade Runner',    rating: 'PG',
-  #           director: 'Ridley Scott', release_date: '1982-06-25' },
-  #         { title: 'Alien',    rating: 'R',
-  #           release_date: '1979-05-25' },
-  #         { title: 'THX-1138',    rating: 'R',
-  #           director: 'George Lucas', release_date: '1971-03-11' }]) }
-  #
-  #   it 'respond with movies when director present' do
-  #     movie = Movie.first
-  #     get :search_directors, id: movie.id
-  #     expect(response).to render_template(:search_directors)
-  #   end
-  #
-  #   it 'redirect to movies path when director absent' do
-  #     movie = Movie.find_by_title('Alien')
-  #     get :search_directors, id: movie.id
-  #     expect(response).to redirect_to(movies_path)
-  #   end
-  # end
-  #
-  # describe '#index' do
-  #   let!(:movies) {  Movie.create([
-  #         { title: 'Star Wars',    rating: 'PG',
-  #           director: 'George Lucas', release_date: '1977-05-25' },
-  #         { title: 'Blade Runner',    rating: 'PG',
-  #           director: 'Ridley Scott', release_date: '1982-06-25' },
-  #         { title: 'Alien',    rating: 'R',
-  #           release_date: '1979-05-25' },
-  #         { title: 'THX-1138',    rating: 'R',
-  #           director: 'George Lucas', release_date: '1971-03-11' }]) }
-  #
-  #   it 'assigns a sort variable' do
-  #     get :index, "sort" => 'title'
-  #     sort = "title"
-  #     expect(sort).to match(/title/)
-  #   end
-  #
-  #   it 'orders by release_date' do
-  #     ordering = 'release_date'
-  #     movies = Movie.all.order(ordering)
-  #     expect(movies.first.title).to match(/THX-1138/)
-  #   end
-  #
-  #   it 'selects by rating' do
-  #     movies = Movie.where(rating: 'R')
-  #     expect(movies.first.title).to match(/Alien/)
-  #   end
-  # end
-  #
+
+  describe 'GET new' do
+    it 'creates a model instance @user' do
+      user = User.new
+      get :new
+      expect(assigns(:user)).to be_a_new(User)
+    end
+
+    it 'selects the correct template to render' do
+      get :new
+      expect(response).to render_template('users/new')
+    end
+  end
+
+  describe 'POST create' do
+    # let!(:user) { user = FactoryGirl.create :user }
+
+    it 'redirects to user\' page if user is saved' do
+      allow(@user).to receive(:save).and_return(true)
+      post :create, "user" => { name: 'Iryna Homlyak', zip_code: '79005', city: 'Lviv',
+                                address: 'Masaryka str., 3', email: 'irina_hom@ukr.net', password: '800000' }
+      expect(response).to redirect_to(root_url)
+    end
+
+    it 'renders \'new\' page if user is not saved' do
+      allow(@user).to receive(:save).and_return(nil)
+      post :create, "user" => { name: 'Iryna Homlyak', zip_code: '79005', city: 'Lviv',
+                                address: 'Masaryka str., 3', email: 'irina_hom@ukr.net', password: '800000' }
+      expect(response).to render_template('users/new')
+      expect(flash[:error]).to be_present
+    end
+  end
+
   # describe '#create' do
   #   it 'assigns a variable' do
   #     movie = Movie.create(title: '12 years a slave', rating: 'R', director: 'Steve McQueen',
