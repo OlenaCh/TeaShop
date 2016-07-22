@@ -41,13 +41,13 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to redirect_to(root_url)
     end
 
-    it 'renders \'new\' page if user is not saved' do
-      allow(@user).to receive(:save).and_return(nil)
-      post :create, "user" => { name: 'Iryna Homlyak', zip_code: '79005', city: 'Lviv',
-                                address: 'Masaryka str., 3', email: 'irina_hom@ukr.net', password: '800000' }
-      expect(response).to render_template('users/new')
-      expect(flash[:error]).to be_present
-    end
+    # it 'renders \'new\' page if user is not saved' do
+    #   allow(@user).to receive(:save).and_return(nil)
+    #   post :create, "user" => { name: 'Iryna Homlyak', zip_code: '79005', city: 'Lviv',
+    #                             address: 'Masaryka str., 3', email: 'irina_hom@ukr.net', password: '800000' }
+    #   expect(response).to render_template('users/new')
+    #   expect(flash[:error]).to be_present
+    # end
   end
 
   # describe '#create' do

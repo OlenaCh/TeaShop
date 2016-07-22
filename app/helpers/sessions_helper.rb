@@ -34,16 +34,16 @@ module SessionsHelper
   # end
 
   # Logs out the current user.
-  def log_out
-  #  forget(current_user)
-    session.delete(:user_id)
-    @current_user = nil
-  end
-
-  def destroy
-    log_out if logged_in?
-    redirect_to root_url
-  end
+  # def log_out
+  # #  forget(current_user)
+  #   session.delete(:user_id)
+  #   @current_user = nil
+  # end
+  #
+  # def destroy
+  #   log_out if logged_in?
+  #   redirect_to root_url
+  # end
 
   # Redirects to stored location (or to the default).
   # def redirect_back_or(default)
