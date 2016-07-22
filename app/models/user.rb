@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }
   validates :zip_code, presence: true, length: { maximum: 10 }
 
-  VALID_CITY_REGEX = /[^0-9]/i
+  VALID_CITY_REGEX = /\A[a-zA-Z]+\z/i
   validates :city, presence: true, length: { maximum: 20 },
             format: { with: VALID_CITY_REGEX }
   validates :address, presence: true, length: { maximum: 50 }

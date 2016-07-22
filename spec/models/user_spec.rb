@@ -30,9 +30,11 @@ RSpec.describe User, type: :model do
       expect(FactoryGirl.build(:user, :city => "a" * 21)).to be_invalid
     end
 
-    # it "should require a city with a certain format" do
-    #   expect(FactoryGirl.build(:user, :city => "Lvi7v")).to be_invalid
-    # end
+    it "should require a city with a certain format" do
+      expect(FactoryGirl.build(:user, :city => "Lvi7v")).to be_invalid
+      expect(FactoryGirl.build(:user, :city => "#####")).to be_invalid
+      expect(FactoryGirl.build(:user, :city => "Lviv")).to be_valid
+    end
 
     it "should require an address" do
       expect(FactoryGirl.build(:user, :address => "")).to be_invalid
@@ -48,7 +50,8 @@ RSpec.describe User, type: :model do
 
     it "should require an email with a certain format" do
       expect(FactoryGirl.build(:user, :email => "olena.ukr.net")).to be_invalid
-      # expect(FactoryGirl.build(:user, :email => "o7ena.ukr.net")).to be_invalid
+      expect(FactoryGirl.build(:user, :email => "o7ena@ukr")).to be_invalid
+      expect(FactoryGirl.build(:user, :email => "o7ena@.ukr")).to be_invalid
     end
   end
 end
