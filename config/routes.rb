@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
 
-  # devise_scope :user do
-  #   get "sign_in", to: "devise/sessions#new"
-  # end
+  mount_devise_token_auth_for 'User', at: 'api/v1',
+      controllers: {
+      registrations:  'api/v1/users/registrations',
+      # sessions:       'api/v1/users/sessions',
+      # passwords:      'api/v1/users/passwords'
+  }
 
-  root to: "devise/registrations#new"
+  root to: "application#index"
 end
 
 

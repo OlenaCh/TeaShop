@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
+gem 'devise_token_auth'
+gem 'omniauth'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
@@ -30,4 +32,3 @@ group :test do
   gem 'spring'
   gem 'simplecov', :require => false
 end
-
