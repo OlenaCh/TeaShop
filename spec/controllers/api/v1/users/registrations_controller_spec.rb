@@ -26,17 +26,15 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
       end
     end
 
-    context 'with invalid params' do
+    context 'with invalid params: already used or missing email' do
       it 'does not create a new user' do
-        post :create, user_params.merge({email: user.email})
-        expect { post :create, user_params }.to change(User, :count).by(0)
+        expect { post :create, user_params.merge({email: user.email}) }.to change(User, :count).by(0)
       end
 
-      it 'responds with HTTP status 403' do
-        assign(user_params: email).with ('')
-        post :create, user_params
-        expect(response.status).to eq 403
-      end
+      # it 'responds with HTTP status 403' do
+      #   post :create, user_params.merge({email: ''})
+      #   expect(response.status).to eq 403
+      # end
     end
 
     # it 'redirects to user\' page if user is saved' do
