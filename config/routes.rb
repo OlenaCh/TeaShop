@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       controllers: {
       registrations:  'api/v1/users/registrations',
       # sessions:       'api/v1/users/sessions',
-      # passwords:      'api/v1/users/passwords'
+      passwords:      'api/v1/users/passwords'
   }
 
   root to: "application#index"
