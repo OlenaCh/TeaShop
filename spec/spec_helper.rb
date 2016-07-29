@@ -1,5 +1,7 @@
 require 'support/factory_girl'
+require 'support/database_cleaner'
 require 'simplecov'
+
 SimpleCov.start 'rails'
 
 RSpec.configure do |config|
@@ -10,18 +12,5 @@ RSpec.configure do |config|
 
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
-  end
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
   end
 end

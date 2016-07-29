@@ -15,7 +15,7 @@
         1,
         null,
         1,
-        3,
+        12,
         null,
         null
       ],
@@ -34,6 +34,7 @@
         null
       ],
       "/home/railsoft/TeaShop/app/models/user.rb": [
+        0,
         0,
         0,
         0,
@@ -146,6 +147,6 @@
         0
       ]
     },
-    "timestamp": 1469781110
+    "timestamp": 1469802715
   }
 }
