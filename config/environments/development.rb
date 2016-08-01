@@ -13,7 +13,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :letter_opener
 
   host = 'localhost:3000'                                          #need to change
-  
+
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.active_support.deprecation = :log
