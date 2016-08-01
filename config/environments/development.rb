@@ -5,12 +5,15 @@ Rails.application.configure do
   config.eager_load = false
 
   config.consider_all_requests_local       = true
+
   config.action_controller.perform_caching = false
 
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :test
+
+  config.action_mailer.delivery_method = :letter_opener
 
   host = 'localhost:3000'                                          #need to change
+  
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
   config.active_support.deprecation = :log
