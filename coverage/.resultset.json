@@ -41,6 +41,26 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/users_controller.rb": [
@@ -147,6 +167,6 @@
         0
       ]
     },
-    "timestamp": 1470044814
+    "timestamp": 1470053307
   }
 }

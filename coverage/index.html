@@ -14,27 +14,27 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-08-01T12:46:54+03:00">2016-08-01T12:46:54+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-08-01T15:08:27+03:00">2016-08-01T15:08:27+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">9.4%</span></span>
+    (<span class="covered_percent"><span class="red">8.03%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.29
+         0.25
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>8</b> files in total.
-    <b>117</b> relevant lines. 
+    <b>137</b> relevant lines. 
     <span class="green"><b>11</b> lines covered</span> and
-    <span class="red"><b>106</b> lines missed </span>
+    <span class="red"><b>126</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -123,10 +123,10 @@
       <tr>
         <td class="strong"><a href="#cc34d925e3f2629bd11f5ca283b21a8b347e3b0e" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>8</td>
-        <td>8</td>
+        <td>28</td>
+        <td>28</td>
         <td>0</td>
-        <td>8</td>
+        <td>28</td>
         <td>0.0</td>
       </tr>
       
@@ -237,9 +237,9 @@
   <a name="Models"></a>
   <div>
     <b>1</b> files in total.
-    <b>8</b> relevant lines. 
+    <b>28</b> relevant lines. 
     <span class="green"><b>0</b> lines covered</span> and
-    <span class="red"><b>8</b> lines missed </span>
+    <span class="red"><b>28</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -258,10 +258,10 @@
       <tr>
         <td class="strong"><a href="#cc34d925e3f2629bd11f5ca283b21a8b347e3b0e" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
         <td class="red strong">0.0 %</td>
-        <td>8</td>
-        <td>8</td>
+        <td>28</td>
+        <td>28</td>
         <td>0</td>
-        <td>8</td>
+        <td>28</td>
         <td>0.0</td>
       </tr>
       
@@ -1305,9 +1305,9 @@
     <h3>app/models/user.rb</h3>
     <h4><span class="red">0.0 %</span> covered</h4>
     <div>
-      <b>8</b> relevant lines. 
+      <b>28</b> relevant lines. 
       <span class="green"><b>0</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <span class="red"><b>28</b> lines missed.</span>
     </div>
   </div>
   
@@ -1323,40 +1323,160 @@
         <li class="missed" data-hits="0" data-linenumber="2">
           
           
-          <code class="ruby">  # Include default devise modules.</code>
+          <code class="ruby">  devise :database_authenticatable, :registerable,</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="3">
           
           
-          <code class="ruby">  devise :database_authenticatable, :registerable,</code>
+          <code class="ruby">         :recoverable, :rememberable, :validatable,</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="4">
           
           
-          <code class="ruby">         :recoverable, :rememberable, :validatable,</code>
+          <code class="ruby">         :confirmable, :omniauthable</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="5">
           
           
-          <code class="ruby">         :confirmable, :omniauthable</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="6">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  include DeviseTokenAuth::Concerns::User</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="7">
           
           
-          <code class="ruby">  include DeviseTokenAuth::Concerns::User</code>
+          <code class="ruby"></code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="8">
+          
+          
+          <code class="ruby">  before_save :downcase_city, :downcase_address</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="9">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="10">
+          
+          
+          <code class="ruby">  validates :name, presence: true, length: { in: 2..40 }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="11">
+          
+          
+          <code class="ruby">  validates :zip_code, presence: true, length: { in: 4..11 }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="13">
+          
+          
+          <code class="ruby">  VALID_CITY_REGEX = /\A[a-zA-Z0-9\-\s]+\z/i</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="14">
+          
+          
+          <code class="ruby">  validates :city, presence: true, length: { in: 2..20 },</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="15">
+          
+          
+          <code class="ruby">            format: { with: VALID_CITY_REGEX }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="16">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="17">
+          
+          
+          <code class="ruby">  validates :address, presence: true, length: { in: 2..40 }</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="18">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="19">
+          
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="20">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="21">
+          
+          
+          <code class="ruby">  def downcase_city</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="22">
+          
+          
+          <code class="ruby">    self.city = city.downcase</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="23">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="24">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="25">
+          
+          
+          <code class="ruby">  def downcase_address</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="26">
+          
+          
+          <code class="ruby">    self.address = address.downcase</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="27">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="28">
           
           
           <code class="ruby">end</code>
