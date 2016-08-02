@@ -20,13 +20,15 @@ gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
 
+# Security
+gem 'figaro'
+
 gem 'swagger-docs'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem "letter_opener"
-  gem 'dotenv-rails'
 end
 
 group :development, :test do

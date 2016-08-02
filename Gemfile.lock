@@ -71,10 +71,6 @@ GEM
       rails (< 6)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    dotenv (2.1.1)
-    dotenv-rails (2.1.1)
-      dotenv (= 2.1.1)
-      railties (>= 4.0, < 5.1)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.7.0)
@@ -84,6 +80,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.3)
       i18n (~> 0.5)
+    figaro (1.1.1)
+      thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     hashie (3.4.4)
@@ -228,9 +226,9 @@ DEPENDENCIES
   database_cleaner (= 1.4.1)
   devise
   devise_token_auth
-  dotenv-rails
   factory_girl_rails (~> 4.0)
   faker
+  figaro
   jbuilder (~> 2.0)
   jquery-rails
   launchy
