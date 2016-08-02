@@ -28,7 +28,7 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = { host: ENV["SMTP_DOMAIN"] }
 
   config.action_mailer.delivery_method = :letter_opener
-  host = 'localhost:3000'                                          #need to change
+  host = 'mighty-sands-49511.herokuapp.com'                                          #need to change
 
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
 
