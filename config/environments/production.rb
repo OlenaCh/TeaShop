@@ -26,7 +26,8 @@ Rails.application.configure do
       domain: 'gmail.com',
       authentication: 'plain',
       enable_starttls_auto: true,
-      user_name: ENV['gmail_username'],
-      password: ENV['gmail_password']
+      user_name: Figaro.env.gmail_username,
+      password: Figaro.env.gmail_password,
+      openssl_verify_mode: 'none'
   }
 end
