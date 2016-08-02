@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development do
   gem 'web-console', '~> 2.0'
   gem "letter_opener"
+  gem 'dotenv-rails'
+  gem "gibbon"
 end
 
 group :development, :test do
