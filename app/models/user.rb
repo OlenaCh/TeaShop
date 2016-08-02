@@ -1,22 +1,28 @@
 class User < ActiveRecord::Base
-  # Include default devise modules.
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
-         :confirmable,
-         :omniauthable
-  before_save -> { skip_confirmation! }
+         :confirmable, :omniauthable
 
   include DeviseTokenAuth::Concerns::User
 
+  before_save :downcase_city, :downcase_address
 
-  # before_validation :set_provider
-  # before_validation :set_uid
+  validates :name, presence: true, length: { in: 2..40 }
+  validates :zip_code, presence: true, length: { in: 4..11 }
 
-  # def set_provider
-  #   self[:provider] = "email" if self[:provider].blank?
-  # end
+  VALID_CITY_REGEX = /\A[a-zA-Z0-9\-\s]+\z/i
+  validates :city, presence: true, length: { in: 2..20 },
+            format: { with: VALID_CITY_REGEX }
 
-  # def set_uid
-  #   self[:uid] = self[:email] if self[:uid].blank? && self[:email].present?
-  # end
+  validates :address, presence: true, length: { in: 2..40 }
+
+  private
+
+  def downcase_city
+    self.city = city.downcase
+  end
+
+  def downcase_address
+    self.address = address.downcase
+  end
 end
