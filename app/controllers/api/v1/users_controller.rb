@@ -1,7 +1,8 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::TestsController < ApplicationController
+  include Docs::Api::V1::TestsController
 
   # def index
-  #   @users = User.all
+  #   @tests = User.all
   # end
 
   # def show
