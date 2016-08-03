@@ -8,8 +8,6 @@ Rails.application.configure do
 
   config.action_controller.perform_caching = false
 
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true

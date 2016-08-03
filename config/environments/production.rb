@@ -20,7 +20,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => "agile-wave-90174.herokuapp.com" }
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.smtp_settings = {
       address: "smtp.gmail.com",
       port: 587,
