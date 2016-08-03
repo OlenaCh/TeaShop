@@ -8,10 +8,25 @@ Rails.application.configure do
 
   config.action_controller.perform_caching = false
 
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :letter_opener
+  # host = 'localhost:3000'
+  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.delivery_method = :letter_opener
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+      address: 'smtp.gmail.com',
+      port: 587,
+      domain: 'gmail.com',
+      authentication: 'plain',
+      # enable_starttls_auto: true,
+      user_name: 'teashoplviv@gmail.com',
+      password: '1teashop@',
+      # openssl_verify_mode: 'none'
+  }
 
   config.active_support.deprecation = :log
 
