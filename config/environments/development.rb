@@ -10,9 +10,6 @@ Rails.application.configure do
 
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host, protocol: 'http' }
-  # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.delivery_method = :letter_opener
-
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.perform_deliveries = true
@@ -27,7 +24,6 @@ Rails.application.configure do
       password: "1teashop@",
       openssl_verify_mode: 'none'
   }
-
   config.host = 'localhost:3000'
 
   config.active_support.deprecation = :log
