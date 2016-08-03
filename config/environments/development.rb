@@ -18,13 +18,13 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: "smtp.gmail.com",
       port: 587,
-      domain: 'gmail.com',
-      authentication: 'plain',
+      domain: "gmail.com",
+      authentication: :plain,
       # enable_starttls_auto: true,
-      user_name: 'teashoplviv@gmail.com',
-      password: '1teashop@',
+      user_name: "teashoplviv@gmail.com",
+      password: "1teashop@",
       # openssl_verify_mode: 'none'
   }
 
