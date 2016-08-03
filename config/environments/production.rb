@@ -25,9 +25,11 @@ Rails.application.configure do
       port: 587,
       domain: "gmail.com",
       authentication: :plain,
-      # enable_starttls_auto: true,
+      enable_starttls_auto: true,
       user_name: "teashoplviv@gmail.com",
       password: "1teashop@",
-      # openssl_verify_mode: 'none'
+      openssl_verify_mode: 'none'
   }
+
+  config.host = 'http://agile-wave-90174.herokuapp.com'
 end

@@ -8,8 +8,8 @@ Rails.application.configure do
 
   config.action_controller.perform_caching = false
 
-  # host = 'localhost:3000'
-  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  host = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   # config.action_mailer.perform_deliveries = true
   # config.action_mailer.delivery_method = :letter_opener
 
@@ -22,11 +22,13 @@ Rails.application.configure do
       port: 587,
       domain: "gmail.com",
       authentication: :plain,
-      # enable_starttls_auto: true,
+      enable_starttls_auto: true,
       user_name: "teashoplviv@gmail.com",
       password: "1teashop@",
-      # openssl_verify_mode: 'none'
+      openssl_verify_mode: 'none'
   }
+
+  config.host = 'localhost:3000'
 
   config.active_support.deprecation = :log
 
