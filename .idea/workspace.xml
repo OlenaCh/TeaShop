@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="07614fbb-9722-4e79-a7bb-e40c7584ba16" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/development.rb" afterPath="$PROJECT_DIR$/config/environments/development.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
-    </list>
+    <list default="true" id="07614fbb-9722-4e79-a7bb-e40c7584ba16" name="Default" comment="" />
     <ignored path="teashop.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -658,7 +655,7 @@
       <workItem from="1469533698508" duration="3023000" />
       <workItem from="1469537559827" duration="620000" />
       <workItem from="1469538675094" duration="328000" />
-      <workItem from="1470226470817" duration="4871000" />
+      <workItem from="1470226470817" duration="5469000" />
     </task>
     <task id="LOCAL-00001" summary="Validations">
       <created>1468588028258</created>
@@ -783,7 +780,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96633000" />
+    <option name="totallyTimeSpent" value="97231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1301" height="744" extended-state="6" />
