@@ -1,2 +1,2 @@
-module Api::V1::TestsHelper
+module Api::V1::UsersHelper
 end

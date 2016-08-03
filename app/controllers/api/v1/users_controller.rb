@@ -1,5 +1,4 @@
 class Api::V1::TestsController < ApplicationController
-  include Docs::Api::V1::TestsController
 
   # def index
   #   @tests = User.all
