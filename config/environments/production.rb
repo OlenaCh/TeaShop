@@ -28,7 +28,8 @@ Rails.application.configure do
       enable_starttls_auto: true,
       user_name: "teashoplviv@gmail.com",
       password: "1teashop@",
-      openssl_verify_mode: 'none'
+      openssl_verify_mode: 'none',
+      email_use_tls: true
   }
 
   config.host = 'http://agile-wave-90174.herokuapp.com'
