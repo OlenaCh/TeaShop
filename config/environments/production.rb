@@ -18,7 +18,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => "agile-wave-90174.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "tea-shop.herokuapp.com" }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
       address: "smtp.gmail.com",
@@ -32,5 +32,5 @@ Rails.application.configure do
       email_use_tls: true
   }
 
-  config.host = 'http://agile-wave-90174.herokuapp.com'
+  config.host = 'http://tea-shop.herokuapp.com'
 end
