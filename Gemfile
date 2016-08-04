@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'web-console', '~> 2.0'
-  gem "letter_opener"
+  gem 'letter_opener'
 end
 
 group :development, :test do
@@ -41,7 +41,7 @@ group :test do
   gem 'launchy'
   gem 'rspec-rails', '3.3.2'
   gem 'ZenTest', '4.11.0'
-  gem "factory_girl_rails", "~> 4.0"
-  gem "mocha"
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'mocha'
   gem 'faker'
 end
