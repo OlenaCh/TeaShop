@@ -8,9 +8,9 @@ class Api::V1::Users::SessionsController < DeviseTokenAuth::SessionsController
   def render_create_success
     @user = User.find_by_email(resource_params[:email])
     if @user.role == 'admin'
-      # render json: {
-      #     action: 'admin#show'
-      # }
+      render json: {
+          action: 'admin#show'
+      }
     else
       render json: {
         data: resource_data(resource_json: @resource.token_validation_response)
