@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   def render_not_found(e)
-    render status: 404, json: { error: e.message }
+    render status: 404, json: { error: e }
   end
 end

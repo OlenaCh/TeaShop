@@ -19,40 +19,40 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find params[:id]
+    @product = Product.find_by_id params[:id]
     if @product
       render json: @product
     else
-      render status: 400, json: @product.errors
+      render_not_found 'Object not found'
     end
   end
 
   def show
-    @product = Product.find params[:id]
+    @product = Product.find_by_id params[:id]
     if @product
       render json: @product
     else
-      render status: 400, json: @product.errors
+      render_not_found 'Object not found'
     end
   end
 
   def update
-    @product = Product.find params[:id]
+    @product = Product.find_by_id params[:id]
     if @product
       @product.update_attributes!(product_params)
       render status: 200, json: @product
     else
-      render status: 400, json: @product.errors
+      render_not_found 'Object not found'
     end
   end
 
   def destroy
-    @product = Product.find params[:id]
+    @product = Product.find_by_id params[:id]
     if @product
       @product.destroy
       render status: 200, json: :index
     else
-      render status: 400, json: @product.errors
+      render_not_found 'Object not found'
     end
   end
 
