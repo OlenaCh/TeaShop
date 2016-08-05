@@ -1,4 +1,6 @@
 class Api::V1::Users::SessionsController < DeviseTokenAuth::SessionsController
+  before_action :authenticate_user!, :except => [:create]
+
   def create
     super
   end
@@ -6,8 +8,7 @@ class Api::V1::Users::SessionsController < DeviseTokenAuth::SessionsController
   private
 
   def render_create_success
-    @user = User.find_by_email(resource_params[:email])
-    if @user.role == 'admin'
+    if current_user.role == 'admin'
       # render json: {
       #   action: 'admin#show'
       # }

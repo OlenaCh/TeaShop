@@ -6,13 +6,11 @@ Rails.application.routes.draw do
       sessions:       'api/v1/users/sessions'
   }
 
-  # namespace :api, defaults: { format: :json } do
-  #   namespace :v1 do
-  #     resources :products
-  #   end
-  # end
-
-  get 'avi/v1/products' => 'products#index'
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :products
+    end
+  end
 
   root to: "application#index"
 end
