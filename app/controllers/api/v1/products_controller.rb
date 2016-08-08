@@ -1,6 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
-  # before_action :authenticate_admin, except: [:show, :index]
-  # before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_admin, except: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index]
 
   def create
     @product = Product.new product_params
@@ -55,11 +55,23 @@ class Api::V1::ProductsController < ApplicationController
 
   private
   def authenticate_admin
-    unless current_user.role == 'admin'
-      return render json: {
-          errors: ["Authorized users only."]
-      }, status: 401
+    if current_user
+      render_admin_authorization_error if current_user.role != 'admin'
+    else
+      render_authorization_error
     end
+  end
+
+  def render_admin_authorization_error
+    render json: {
+        errors: ["Admins only."]
+    }, status: 401
+  end
+
+  def render_authorization_error
+    render json: {
+        errors: ["Authorized users only."]
+    }, status: 401
   end
 
   def product_params
@@ -67,10 +79,3 @@ class Api::V1::ProductsController < ApplicationController
                   :price, :exists, :image)
   end
 end
-
-# def find_user
-#   User.find_by(email: wizard_params[:user][:email]
-#   # name: wizard_params[:user][:name],
-#   # mobile_phone: wizard_params[:user][:mobile_phone]
-#   )
-# end
