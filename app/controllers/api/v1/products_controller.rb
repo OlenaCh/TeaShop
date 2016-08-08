@@ -54,6 +54,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   private
+
   def authenticate_admin
     if current_user
       render_admin_authorization_error if current_user.role != 'admin'
