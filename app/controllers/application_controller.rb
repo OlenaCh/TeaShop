@@ -3,9 +3,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
 
-  def index
-  end
-
   def render_not_found(e)
     render status: 404, json: { error: e }
   end

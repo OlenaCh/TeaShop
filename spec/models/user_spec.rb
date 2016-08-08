@@ -61,9 +61,5 @@ RSpec.describe User, type: :model do
     it "should require an address no longer than 40 symbols" do
       expect(FactoryGirl.build(:user, :address => "a" * 41)).to be_invalid
     end
-
-    # it "should downcast address before saving in db" do
-    #   expect(FactoryGirl.build(:user, :address => "a" * 41)).to be_invalid
-    # end
   end
 end

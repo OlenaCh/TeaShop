@@ -44,4 +44,5 @@ group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'mocha'
   gem 'faker'
+  gem 'shoulda-matchers'
 end
