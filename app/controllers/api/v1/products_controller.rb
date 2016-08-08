@@ -47,7 +47,7 @@ class Api::V1::ProductsController < ApplicationController
     @product = Product.find_by_id params[:id]
     if @product
       @product.destroy
-      render status: 200, json: :index
+      redirect_to api_v1_products_path, format: :json
     else
       render_not_found 'Object not found'
     end
