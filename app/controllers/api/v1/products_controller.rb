@@ -1,9 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
   # before_action :authenticate_admin, except: [:show, :index]
-  before_action :authenticate_user!
-
-  def new
-  end
+  # before_action :authenticate_user!, only: [:show, :index]
 
   def create
     @product = Product.new product_params
@@ -12,7 +9,6 @@ class Api::V1::ProductsController < ApplicationController
     else
       render status: 400, json: @product.errors
     end
-
   end
 
   def index

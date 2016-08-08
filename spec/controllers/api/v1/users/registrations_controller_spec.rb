@@ -72,10 +72,6 @@ end
 # end
 
 # RSpec.describe UsersController, type: :controller do
-# #   describe 'GET show' do
-# #     let! (:user) {
-# #       user = FactoryGirl.create :user
-# #     }
 # #
 # #     it 'calls the model method that performs search' do
 # #       expect(User).to receive(:find).with("#{user.id}")

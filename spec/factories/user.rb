@@ -6,5 +6,6 @@ FactoryGirl.define do
     address 'Address'
     sequence(:email) { |n| "email_#{n}@test.com" }
     sequence(:password) { |n| "#{n}"*8 }
+    role 'user'
   end
 end
