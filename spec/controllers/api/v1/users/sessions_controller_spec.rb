@@ -23,7 +23,7 @@ RSpec.describe Api::V1::Users::SessionsController, type: :controller do
       it 'does not log in' do
         post :create, { email: user.email, password: user.password }
         allow(request.env['warden']).to receive(:authenticate!).and_return(nil)
-        expect(JSON.parse(response.body)).to eq "success" => false, "errors" => [I18n.t("devise_token_auth.sessions.not_confirmed")]
+        expect(JSON.parse(response.body)["success"]).to eq false
       end
     end
 
