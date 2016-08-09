@@ -85,6 +85,21 @@
         null,
         null
       ],
+      "/home/railsoft/TeaShop/app/controllers/api/v1/users/passwords_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        7,
+        7,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/users/registrations_controller.rb": [
         1,
         null,
@@ -176,11 +191,6 @@
         0,
         0
       ],
-      "/home/railsoft/TeaShop/app/controllers/api/v1/users/passwords_controller.rb": [
-        0,
-        0,
-        0
-      ],
       "/home/railsoft/TeaShop/app/controllers/concerns/docs/api/v1/users_controller.rb": [
 
       ],
@@ -196,6 +206,6 @@
         0
       ]
     },
-    "timestamp": 1470746383
+    "timestamp": 1470756951
   }
 }
