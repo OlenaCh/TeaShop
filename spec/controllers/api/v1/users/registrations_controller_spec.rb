@@ -20,6 +20,10 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
         expect { post :create, user_params }.to change(User, :count).by(1)
       end
 
+      it 'sends confirmation instructions' do
+        expect { post :create, user_params }.to change(ActionMailer::Base.deliveries, :count).by(1)
+      end
+
       it 'responds with HTTP status 200' do
         post :create, user_params
         expect(response.status).to eq 200
@@ -30,6 +34,10 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
       context 'with duplicated email' do
         it 'does not create a new user' do
           expect { post :create, user_params.merge({email: user.email}) }.to change(User, :count).by(0)
+        end
+
+        it 'does not send confirmation instructions' do
+          expect { post :create, user_params.merge({email: user.email}) }.to change(ActionMailer::Base.deliveries, :count).by(0)
         end
 
         it 'responds with HTTP status 422' do
@@ -43,6 +51,10 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
           expect { post :create, user_params.merge({email: ''}) }.to change(User, :count).by(0)
         end
 
+        it 'does not send confirmation instructions' do
+          expect { post :create, user_params.merge({email: ''}) }.to change(ActionMailer::Base.deliveries, :count).by(0)
+        end
+
         it 'responds with HTTP status 422' do
           post :create, user_params.merge({email: ''})
           expect(response.status).to eq 422
@@ -54,6 +66,10 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
           expect { post :create, user_params.merge({password: ''}) }.to change(User, :count).by(0)
         end
 
+        it 'does not send confirmation instructions' do
+          expect { post :create, user_params.merge({password: ''}) }.to change(ActionMailer::Base.deliveries, :count).by(0)
+        end
+
         it 'responds with HTTP status 422' do
           post :create, user_params.merge({password: ''})
           expect(response.status).to eq 422
@@ -62,7 +78,6 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
     end
   end
 end
-
 
 # it 'redirects to user\' page if user is saved' do
 #   allow(@user).to receive(:save).and_return(true)
@@ -89,9 +104,3 @@ end
 # #       get :new
 # #       expect(assigns(:user)).to be_a_new(User)
 # #     end
-# #
-# #     it 'selects the correct template to render' do
-# #       get :new
-# #       expect(response).to render_template('users/new')
-# #     end
-# #   end
