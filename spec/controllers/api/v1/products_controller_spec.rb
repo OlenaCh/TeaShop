@@ -21,7 +21,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       allow(controller).to receive(:current_user).and_return(admin)
     end
 
-    describe 'POST create' do
+    describe 'POST #create' do
       context 'with valid params' do
         it 'creates a new product' do
           expect { post :create, product_params }.to change(Product, :count).by(1)
@@ -47,7 +47,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'GET edit' do
+    describe 'GET #edit' do
       context 'with valid params' do
         it 'renders an existing product' do
           get :edit, id: product.id
@@ -66,7 +66,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'PUT update' do
+    describe 'PUT #update' do
       context 'with valid params' do
         it 'responds with HTTP status 200' do
           allow(@product).to receive(:update_attributes!).and_return(true)
@@ -92,7 +92,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'DELETE destroy' do
+    describe 'DELETE #destroy' do
       context 'with valid params' do
         it 'deletes an existing product' do
           expect { delete :destroy, id: product.id }.to change(Product, :count).by(-1)
@@ -130,7 +130,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       allow(controller).to receive(:current_user).and_return(user)
     end
 
-    describe 'GET index' do
+    describe 'GET #index' do
       it 'renders all products in database' do
         another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
                                      :long_description => 'Very tasty tea', :price => '30.0')
@@ -139,7 +139,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'GET show' do
+    describe 'GET #show' do
       context 'with valid params' do
         it 'renders an existing product' do
           get :show, id: product.id
@@ -158,7 +158,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'POST create' do
+    describe 'POST #create' do
       it 'does not create a new product' do
         expect { post :create, product_params }.to change(Product, :count).by(0)
       end
@@ -174,7 +174,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'GET edit' do
+    describe 'GET #edit' do
       it 'responds with HTTP status 401' do
         get :edit, id: product.id
         expect(response.status).to eq 401
@@ -186,7 +186,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'PUT update' do
+    describe 'PUT #update' do
       it 'responds with HTTP status 401' do
         put :update, id: product.id
         expect(response.status).to eq 401
@@ -198,7 +198,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'DELETE destroy' do
+    describe 'DELETE #destroy' do
       it 'does not delete an existing product' do
         expect { delete :destroy, id: product.id }.to change(Product, :count).by(0)
       end
@@ -220,7 +220,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
     end
 
-    describe 'GET index' do
+    describe 'GET #index' do
       it 'responds with HTTP status 401' do
         get :index
         expect(response.status).to eq 401
@@ -232,7 +232,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'GET show' do
+    describe 'GET #show' do
       it 'responds with HTTP status 401' do
         get :show, id: product.id
         expect(response.status).to eq 401
@@ -244,7 +244,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'POST create' do
+    describe 'POST #create' do
       it 'does not create a new product' do
         expect { post :create, product_params }.to change(Product, :count).by(0)
       end
@@ -260,7 +260,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'GET edit' do
+    describe 'GET #edit' do
       it 'responds with HTTP status 401' do
         get :edit, id: product.id
         expect(response.status).to eq 401
@@ -272,7 +272,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'PUT update' do
+    describe 'PUT #update' do
       it 'responds with HTTP status 401' do
         put :update, id: product.id
         expect(response.status).to eq 401
@@ -284,7 +284,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
-    describe 'DELETE destroy' do
+    describe 'DELETE #destroy' do
       it 'does not delete an existing product' do
         expect { delete :destroy, id: product.id }.to change(Product, :count).by(0)
       end

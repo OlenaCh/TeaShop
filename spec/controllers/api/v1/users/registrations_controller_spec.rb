@@ -14,7 +14,7 @@ RSpec.describe Api::V1::Users::RegistrationsController, type: :controller do
     @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
-  describe 'POST create' do
+  describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new user' do
         expect { post :create, user_params }.to change(User, :count).by(1)

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :products, except: [:new]
-      resources :orders, only: [:index, :create, :update]
+      resources :orders, only: [:index, :create, :edit, :update]
       resources :order_lists, except: [:new]
     end
   end

@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def render_not_found(e)
-    render status: 404, json: { error: e }
+    render json: {
+        error: e
+    }, status: 404
+  end
+
+  def render_authorization_error
+    render json: {
+        errors: ["Authorized users only."]
+    }, status: 401
   end
 end

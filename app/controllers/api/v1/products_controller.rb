@@ -69,12 +69,6 @@ class Api::V1::ProductsController < ApplicationController
     }, status: 401
   end
 
-  def render_authorization_error
-    render json: {
-        errors: ["Authorized users only."]
-    }, status: 401
-  end
-
   def product_params
     params.permit(:title, :short_description, :long_description,
                   :price, :exists, :image)

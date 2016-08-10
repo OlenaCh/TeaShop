@@ -10,13 +10,17 @@
         1,
         4,
         null,
+        null,
+        null,
+        null,
+        1,
+        17,
+        null,
+        null,
+        null,
         null
       ],
       "/home/railsoft/TeaShop/app/helpers/application_helper.rb": [
-        1,
-        null
-      ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/items_helper.rb": [
         1,
         null
       ],
@@ -37,6 +41,12 @@
         null
       ],
       "/home/railsoft/TeaShop/app/helpers/api/v1/users/sessions_helper.rb": [
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/models/order.rb": [
+        1,
+        1,
         1,
         null
       ],
@@ -72,16 +82,12 @@
         1,
         null,
         1,
-        68,
+        74,
         null,
         null,
         1,
-        68,
+        74,
         null,
-        null
-      ],
-      "/home/railsoft/TeaShop/app/controllers/api/v1/items_controller.rb": [
-        1,
         null
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/order_lists_controller.rb": [
@@ -90,6 +96,40 @@
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/orders_controller.rb": [
         1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        13,
+        6,
+        null,
+        7,
+        null,
+        null,
+        null,
+        1,
+        6,
+        null,
+        null,
+        null,
         null
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/products_controller.rb": [
@@ -155,12 +195,6 @@
         23,
         null,
         10,
-        null,
-        null,
-        null,
-        1,
-        10,
-        null,
         null,
         null,
         null,
@@ -240,16 +274,10 @@
         1,
         null
       ],
-      "/home/railsoft/TeaShop/app/models/order.rb": [
-        1,
-        1,
-        1,
-        null
-      ],
       "/home/railsoft/TeaShop/app/controllers/concerns/docs/api/v1/users_controller.rb": [
 
       ]
     },
-    "timestamp": 1470836944
+    "timestamp": 1470841861
   }
 }
