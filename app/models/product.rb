@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  has_many :orders, through :commissions
+
   validates :title, presence: true, length: { in: 2..60 }, uniqueness: true
   validates :short_description, presence: true, length: { in: 2..100 }
   validates :long_description, presence: true, length: { in: 2..500 }
