@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   include DeviseTokenAuth::Concerns::User
 
+  has_many :orders, dependent: :destroy
+
   before_save :downcase_city, :downcase_address
 
   validates :name, presence: true, length: { in: 2..40 }
