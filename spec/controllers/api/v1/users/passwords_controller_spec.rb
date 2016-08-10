@@ -53,6 +53,11 @@ RSpec.describe Api::V1::Users::PasswordsController, type: :controller do
         post :create, email: 'malicious@email.com', redirect_url: 'test.com'
         expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Authorized users only."]}).to_json
       end
+
+      it 'responds with HTTP status 401' do
+        post :create, email: 'malicious@email.com', redirect_url: 'test.com'
+        expect(response.status).to eq 401
+      end
     end
 
     describe 'PUT #update' do

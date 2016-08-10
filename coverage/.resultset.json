@@ -1,6 +1,71 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/railsoft/TeaShop/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        4,
+        null,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/helpers/api/v1/products_helper.rb": [
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/helpers/api/v1/users_helper.rb": [
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/helpers/api/v1/users/sessions_helper.rb": [
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/models/product.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/models/user.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        68,
+        null,
+        null,
+        1,
+        68,
+        null,
+        null
+      ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/products_controller.rb": [
         1,
         1,
@@ -91,9 +156,9 @@
         null,
         1,
         1,
-        7,
-        7,
-        2,
+        8,
+        8,
+        3,
         null,
         null,
         null,
@@ -137,75 +202,10 @@
         1,
         null
       ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/users_helper.rb": [
-        0,
-        0
-      ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/users/sessions_helper.rb": [
-        0,
-        0
-      ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/products_helper.rb": [
-        0,
-        0
-      ],
-      "/home/railsoft/TeaShop/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/home/railsoft/TeaShop/app/models/user.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/railsoft/TeaShop/app/models/product.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/home/railsoft/TeaShop/app/controllers/concerns/docs/api/v1/users_controller.rb": [
 
-      ],
-      "/home/railsoft/TeaShop/app/controllers/application_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1470757818
+    "timestamp": 1470818623
   }
 }

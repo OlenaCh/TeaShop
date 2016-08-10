@@ -1,8 +1,5 @@
 require 'support/factory_girl'
 require 'support/database_cleaner'
-require 'simplecov'
-
-SimpleCov.start 'rails'
 
 RSpec.configure do |config|
 
