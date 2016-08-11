@@ -10,10 +10,6 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
     product = FactoryGirl.create(:product)
   }
 
-  before(:each) do
-    @request.env['devise.mapping'] = Devise.mappings[:user]
-  end
-
   describe 'admin\'s paths' do
     before(:each) do
       admin = FactoryGirl.create(:admin)
