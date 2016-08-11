@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160810133221) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "product_id"
-    t.integer  "amount",     default: 0
+    t.integer  "amount",     default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
@@ -37,12 +37,12 @@ ActiveRecord::Schema.define(version: 20160810133221) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
-    t.float    "shipment",    default: 0.0
-    t.float    "subtotal",    default: 0.0
-    t.float    "grand_total", default: 0.0
-    t.string   "status",      default: "In process"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.float    "shipment",    default: 0.0,       null: false
+    t.float    "subtotal",    default: 0.0,       null: false
+    t.float    "grand_total", default: 0.0,       null: false
+    t.string   "status",      default: "Pending", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
