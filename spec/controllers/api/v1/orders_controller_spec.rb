@@ -6,7 +6,7 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
   }
 
   let!(:order) {
-    product = FactoryGirl.create(:order)
+    order = FactoryGirl.create(:order)
   }
 
   describe 'admin\'s paths' do
