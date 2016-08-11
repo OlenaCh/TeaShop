@@ -7,7 +7,14 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    #
+    # @order = Order.new
+    # @tem = Item.new item_params
+    # @order.items << @item
+    # if @order.save && @item.save
+    #   render status: 200, json: @order
+    # else
+    #   render status: 400, json: @order.errors
+    # end
   end
 
   def edit
@@ -33,4 +40,8 @@ class Api::V1::OrdersController < ApplicationController
         errors: ["Users only."]
     }, status: 401
   end
+
+  # def item_params
+  #   params.permit(:id, :amount)
+  # end
 end

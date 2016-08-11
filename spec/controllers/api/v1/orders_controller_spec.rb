@@ -95,23 +95,33 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     #     end
     #   end
     # end
-    #
-    # describe 'POST create' do
-    #   it 'does not create a new product' do
-    #     expect { post :create, product_params }.to change(Product, :count).by(0)
-    #   end
-    #
-    #   it 'responds with HTTP status 401' do
-    #     post :create, product_params
-    #     expect(response.status).to eq 401
-    #   end
-    #
-    #   it 'renders that this page is for authorized users only' do
-    #     post :create, product_params
-    #     expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Admins only."]}).to_json
-    #   end
-    # end
-    #
+
+    describe 'POST #create' do
+      context 'with valid params' do
+        # it 'creates a new product' do
+        #   expect { post :create, order_params }.to change(Order, :count).by(1)
+        # end
+
+        # it 'responds with HTTP status 200' do
+        #   post :create, product_params
+        #   expect(response.status).to eq 200
+        # end
+      end
+
+      # context 'with invalid params' do
+      #   context 'with duplicated title' do
+      #     it 'does not create a new product' do
+      #       expect { post :create, product_params.merge({title: product.title}) }.to change(Product, :count).by(0)
+      #     end
+      #
+      #     it 'responds with HTTP status 400' do
+      #       post :create, product_params.merge({title: product.title})
+      #       expect(response.status).to eq 400
+      #     end
+      #   end
+      # end
+    end
+
     # describe 'GET edit' do
     #   it 'responds with HTTP status 401' do
     #     get :edit, id: product.id

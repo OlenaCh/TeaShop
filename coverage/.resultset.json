@@ -14,7 +14,7 @@
         null,
         null,
         1,
-        17,
+        20,
         null,
         null,
         null,
@@ -52,6 +52,8 @@
       ],
       "/home/railsoft/TeaShop/app/models/product.rb": [
         1,
+        1,
+        null,
         1,
         1,
         1,
@@ -107,6 +109,13 @@
         null,
         null,
         null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         1,
         null,
         null,
@@ -127,6 +136,10 @@
         null,
         1,
         6,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -221,8 +234,6 @@
         3,
         null,
         null,
-        null,
-        null,
         null
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/users/registrations_controller.rb": [
@@ -278,6 +289,6 @@
 
       ]
     },
-    "timestamp": 1470841861
+    "timestamp": 1470919574
   }
 }
