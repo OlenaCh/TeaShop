@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::OrderListsController, type: :controller do
+RSpec.describe Api::V1::OrdersProductsController, type: :controller do
   #
 end

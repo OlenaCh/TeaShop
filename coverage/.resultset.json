@@ -24,11 +24,11 @@
         1,
         null
       ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/order_lists_helper.rb": [
+      "/home/railsoft/TeaShop/app/helpers/api/v1/orders_helper.rb": [
         1,
         null
       ],
-      "/home/railsoft/TeaShop/app/helpers/api/v1/orders_helper.rb": [
+      "/home/railsoft/TeaShop/app/helpers/api/v1/orders_products_helper.rb": [
         1,
         null
       ],
@@ -52,6 +52,7 @@
         null
       ],
       "/home/railsoft/TeaShop/app/models/product.rb": [
+        1,
         1,
         1,
         null,
@@ -91,10 +92,6 @@
         1,
         74,
         null,
-        null
-      ],
-      "/home/railsoft/TeaShop/app/controllers/api/v1/order_lists_controller.rb": [
-        1,
         null
       ],
       "/home/railsoft/TeaShop/app/controllers/api/v1/orders_controller.rb": [
@@ -170,6 +167,11 @@
         null,
         null,
         null,
+        null,
+        null
+      ],
+      "/home/railsoft/TeaShop/app/controllers/api/v1/orders_products_controller.rb": [
+        1,
         null,
         null
       ],
@@ -301,14 +303,7 @@
         1,
         null
       ],
-      "/home/railsoft/TeaShop/app/models/item.rb": [
-        1,
-        1,
-        1,
-        1,
-        null
-      ],
-      "/home/railsoft/TeaShop/app/models/order_list.rb": [
+      "/home/railsoft/TeaShop/app/models/orders_product.rb": [
         1,
         1,
         1,
@@ -318,6 +313,6 @@
 
       ]
     },
-    "timestamp": 1471004989
+    "timestamp": 1471012967
   }
 }

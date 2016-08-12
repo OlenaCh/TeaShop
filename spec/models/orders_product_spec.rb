@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe OrderList, type: :model do
+RSpec.describe OrdersProduct, type: :model do
   #
 end
