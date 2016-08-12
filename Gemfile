@@ -5,6 +5,9 @@ gem 'rails', '4.2.6'
 # PostgreSQL
 gem 'pg', '~> 0.15'
 
+# Cross-origin requests
+gem 'rack-cors', :require => 'rack/cors'
+
 # Front End
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
