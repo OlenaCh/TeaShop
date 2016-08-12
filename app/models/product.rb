@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  has_many :items
+  has_many :orders_products
+  has_many :orders, through: :orders_products
 
   validates :title, presence: true, length: { in: 2..60 }, uniqueness: true
   validates :short_description, presence: true, length: { in: 2..100 }

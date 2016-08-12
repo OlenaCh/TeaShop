@@ -14,26 +14,26 @@
       <img src="./assets/0.10.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2016-08-11T16:21:20+03:00">2016-08-11T16:21:20+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2016-08-12T15:29:49+03:00">2016-08-12T15:29:49+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">98.32%</span></span>
+    (<span class="covered_percent"><span class="green">98.35%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.99
+         3.94
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>20</b> files in total.
-    <b>119</b> relevant lines. 
-    <span class="green"><b>117</b> lines covered</span> and
+    <b>121</b> relevant lines. 
+    <span class="green"><b>119</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -63,7 +63,7 @@
       <tr>
         <td class="strong"><a href="#6023c9230e7d11f4054156ed1be0623dcae3b099" class="src_link" title="app/controllers/api/v1/orders_controller.rb">app/controllers/api/v1/orders_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>47</td>
+        <td>74</td>
         <td>14</td>
         <td>14</td>
         <td>0</td>
@@ -203,9 +203,9 @@
       <tr>
         <td class="strong"><a href="#973b048ea9ad516c0ff5be7bc9b0103e0abb197b" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>5</td>
         <td>4</td>
-        <td>3</td>
-        <td>3</td>
+        <td>4</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -213,9 +213,9 @@
       <tr>
         <td class="strong"><a href="#77c9152e014e525a346bf40c263dc659080cd29f" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>5</td>
         <td>4</td>
-        <td>3</td>
-        <td>3</td>
+        <td>4</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -301,7 +301,7 @@
       <tr>
         <td class="strong"><a href="#6023c9230e7d11f4054156ed1be0623dcae3b099" class="src_link" title="app/controllers/api/v1/orders_controller.rb">app/controllers/api/v1/orders_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>47</td>
+        <td>74</td>
         <td>14</td>
         <td>14</td>
         <td>0</td>
@@ -390,15 +390,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.85
+         5.55
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>5</b> files in total.
-    <b>30</b> relevant lines. 
-    <span class="green"><b>30</b> lines covered</span> and
+    <b>32</b> relevant lines. 
+    <span class="green"><b>32</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -418,9 +418,9 @@
       <tr>
         <td class="strong"><a href="#973b048ea9ad516c0ff5be7bc9b0103e0abb197b" class="src_link" title="app/models/item.rb">app/models/item.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>5</td>
         <td>4</td>
-        <td>3</td>
-        <td>3</td>
+        <td>4</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -428,9 +428,9 @@
       <tr>
         <td class="strong"><a href="#77c9152e014e525a346bf40c263dc659080cd29f" class="src_link" title="app/models/order.rb">app/models/order.rb</a></td>
         <td class="green strong">100.0 %</td>
+        <td>5</td>
         <td>4</td>
-        <td>3</td>
-        <td>3</td>
+        <td>4</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -789,115 +789,115 @@
         <li class="never" data-hits="" data-linenumber="10">
           
           
-          <code class="ruby">    # @order = Order.new</code>
+          <code class="ruby">    # @item = create_item</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="11">
           
           
-          <code class="ruby">    # @tem = Item.new item_params</code>
+          <code class="ruby">    # user = current_user</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="12">
           
           
-          <code class="ruby">    # @order.items &lt;&lt; @item</code>
+          <code class="ruby">    # if user.current_order == nil</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">    # if @order.save &amp;&amp; @item.save</code>
+          <code class="ruby">    #   @order = create_order @item</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="14">
           
           
-          <code class="ruby">    #   render status: 200, json: @order</code>
+          <code class="ruby">    # else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">    # else</code>
+          <code class="ruby">    #   @order = update_order(user.current_order, @item)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby">    #   render status: 400, json: @order.errors</code>
+          <code class="ruby">    # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
           
           
-          <code class="ruby">    # end</code>
+          <code class="ruby">    # @order_list = OrderList.new(@order.id, @item.id)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="18">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    # @order.items &lt;&lt; @item</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="19">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    # if @order.save &amp;&amp; @item.save</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="20">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="20">
           
-          <code class="ruby">  def edit</code>
+          
+          <code class="ruby">    #   render status: 200, json: @order</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="21">
           
           
-          <code class="ruby">    #</code>
+          <code class="ruby">    # else</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="22">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">    #   render status: 400, json: @order.errors</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="23">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    # end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="24">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def update</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="25">
-          
-          
-          <code class="ruby">    #</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="24">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="27">
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="28">
+        <li class="covered" data-hits="1" data-linenumber="26">
           <span class="hits">1</span>
           
-          <code class="ruby">  private</code>
+          <code class="ruby">  def edit</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="27">
+          
+          
+          <code class="ruby">    #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="28">
+          
+          
+          <code class="ruby">  end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="29">
@@ -909,73 +909,73 @@
         <li class="covered" data-hits="1" data-linenumber="30">
           <span class="hits">1</span>
           
-          <code class="ruby">  def authenticate_admin</code>
+          <code class="ruby">  def update</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="31">
-          <span class="hits">13</span>
+        <li class="never" data-hits="" data-linenumber="31">
           
-          <code class="ruby">    if current_user</code>
+          
+          <code class="ruby">    #</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="32">
-          <span class="hits">6</span>
-          
-          <code class="ruby">      render_admin_authorization_error if current_user.role != &#39;user&#39;</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="33">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="covered" data-hits="7" data-linenumber="34">
-          <span class="hits">7</span>
-          
-          <code class="ruby">      render_authorization_error</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="35">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="36">
+        <li class="never" data-hits="" data-linenumber="32">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="37">
+        <li class="never" data-hits="" data-linenumber="33">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="38">
+        <li class="covered" data-hits="1" data-linenumber="34">
           <span class="hits">1</span>
           
-          <code class="ruby">  def render_admin_authorization_error</code>
+          <code class="ruby">  private</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="39">
+        <li class="never" data-hits="" data-linenumber="35">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="36">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def authenticate_admin</code>
+        </li>
+      
+        <li class="covered" data-hits="13" data-linenumber="37">
+          <span class="hits">13</span>
+          
+          <code class="ruby">    if current_user</code>
+        </li>
+      
+        <li class="covered" data-hits="6" data-linenumber="38">
           <span class="hits">6</span>
           
-          <code class="ruby">    render json: {</code>
+          <code class="ruby">      render_admin_authorization_error if current_user.role != &#39;user&#39;</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="40">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
-          <code class="ruby">        errors: [&quot;Users only.&quot;]</code>
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="covered" data-hits="7" data-linenumber="40">
+          <span class="hits">7</span>
+          
+          <code class="ruby">      render_authorization_error</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="41">
           
           
-          <code class="ruby">    }, status: 401</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="42">
@@ -990,25 +990,187 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="covered" data-hits="1" data-linenumber="44">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">  # def item_params</code>
+          <code class="ruby">  def render_admin_authorization_error</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="45">
+        <li class="covered" data-hits="6" data-linenumber="45">
+          <span class="hits">6</span>
           
-          
-          <code class="ruby">  #   params.permit(:id, :amount)</code>
+          <code class="ruby">    render json: {</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="46">
           
           
-          <code class="ruby">  # end</code>
+          <code class="ruby">        errors: [&quot;Users only.&quot;]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="47">
+          
+          
+          <code class="ruby">    }, status: 401</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="48">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">  # def create_item</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="51">
+          
+          
+          <code class="ruby">  #   item = Item.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="52">
+          
+          
+          <code class="ruby">  #   item.amount = order_item_params[:amount]</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="53">
+          
+          
+          <code class="ruby">  #   item.product_id = Product.find(order_item_params[:product_id]).id</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">  #   item</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="55">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="56">
+          
+          
+          <code class="ruby">  #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="57">
+          
+          
+          <code class="ruby">  # def create_order item</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="58">
+          
+          
+          <code class="ruby">  #   order = Order.new</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="59">
+          
+          
+          <code class="ruby">  #   order.subtotal = item.amount * Product.find(item.product_id).price</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby">  #   order.grand_total = order.subtotal</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="61">
+          
+          
+          <code class="ruby">  #   order</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">  #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby">  # def update_order(id, item)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="65">
+          
+          
+          <code class="ruby">  #   order = Order.find(id)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="66">
+          
+          
+          <code class="ruby">  #   order.subtotal = order.subtotal + item.amount * Product.find(item.product_id).price</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="67">
+          
+          
+          <code class="ruby">  #   order.grand_total = order.grand_total + item.amount * Product.find(item.product_id).price</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="68">
+          
+          
+          <code class="ruby">  #   order</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
+          
+          
+          <code class="ruby">  #</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">  # def order_item_params</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby">  #   params.permit(:product_id, :amount)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="73">
+          
+          
+          <code class="ruby">  # end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
           
           
           <code class="ruby">end</code>
@@ -2139,8 +2301,8 @@
     <h3>app/models/item.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2163,10 +2325,16 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
+          <code class="ruby">  has_many :order_list</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
           <code class="ruby">  has_many :orders, through: :order_list</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">end</code>
@@ -2181,8 +2349,8 @@
     <h3>app/models/order.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>3</b> relevant lines. 
-      <span class="green"><b>3</b> lines covered</span> and
+      <b>4</b> relevant lines. 
+      <span class="green"><b>4</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -2205,10 +2373,16 @@
         <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
+          <code class="ruby">  has_many :order_list</code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="4">
+          <span class="hits">1</span>
+          
           <code class="ruby">  has_many :items, through: :order_list</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="4">
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">end</code>

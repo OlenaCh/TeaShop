@@ -7,8 +7,14 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    # @order = Order.new
-    # @tem = Item.new item_params
+    # @item = create_item
+    # user = current_user
+    # if user.current_order == nil
+    #   @order = create_order @item
+    # else
+    #   @order = update_order(user.current_order, @item)
+    # end
+    # @order_list = OrderList.new(@order.id, @item.id)
     # @order.items << @item
     # if @order.save && @item.save
     #   render status: 200, json: @order
@@ -41,7 +47,28 @@ class Api::V1::OrdersController < ApplicationController
     }, status: 401
   end
 
-  # def item_params
-  #   params.permit(:id, :amount)
+  # def create_item
+  #   item = Item.new
+  #   item.amount = order_item_params[:amount]
+  #   item.product_id = Product.find(order_item_params[:product_id]).id
+  #   item
+  # end
+  #
+  # def create_order item
+  #   order = Order.new
+  #   order.subtotal = item.amount * Product.find(item.product_id).price
+  #   order.grand_total = order.subtotal
+  #   order
+  # end
+  #
+  # def update_order(id, item)
+  #   order = Order.find(id)
+  #   order.subtotal = order.subtotal + item.amount * Product.find(item.product_id).price
+  #   order.grand_total = order.grand_total + item.amount * Product.find(item.product_id).price
+  #   order
+  # end
+  #
+  # def order_item_params
+  #   params.permit(:product_id, :amount)
   # end
 end

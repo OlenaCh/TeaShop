@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::OrdersController, type: :controller do
-  let!(:order_params) {
-    order_params = FactoryGirl.attributes_for(:order)
+  let!(:product) {
+    product = FactoryGirl.create(:product)
+  }
+
+  let!(:order_item_params) {
+    order_params = { product_id: product.id, amount: 2 }
   }
 
   let!(:order) {
@@ -22,12 +26,12 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     describe 'POST #create' do
       it 'responds with HTTP status 401' do
-        post :create, order_params
+        post :create, order_item_params
         expect(response.status).to eq 401
       end
 
       it 'renders that this page is for authorized users only' do
-        post :create, order_params
+        post :create, order_item_params
         expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Users only."]}).to_json
       end
     end
@@ -93,16 +97,45 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     end
 
     describe 'POST #create' do
-      context 'with valid params' do
-        # it 'creates a new product' do
-        #   expect { post :create, order_params }.to change(Order, :count).by(1)
-        # end
-
-        # it 'responds with HTTP status 200' do
-        #   post :create, product_params
-        #   expect(response.status).to eq 200
-        # end
-      end
+      # context 'with valid params' do
+      #   context 'user has no pending order yet' do
+      #     it 'creates a new order' do
+      #       expect { post :create, order_item_params }.to change(Order, :count).by(1)
+      #     end
+      #
+      #     it 'creates a new order list' do
+      #       expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
+      #     end
+      #
+      #     it 'creates a new item' do
+      #       expect { post :create, order_item_params }.to change(Item, :count).by(1)
+      #     end
+      #
+      #     it 'responds with HTTP status 200' do
+      #       post :create, order_item_params
+      #       expect(response.status).to eq 200
+      #     end
+      #   end
+      #
+      #   context 'user has a pending order' do
+      #     it 'does not create a new order' do
+      #       expect { post :create, order_item_params }.to change(Order, :count).by(0)
+      #     end
+      #
+      #     # it 'creates a new order list' do
+      #     #   expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
+      #     # end
+      #     #
+      #     # it 'creates a new item' do
+      #     #   expect { post :create, order_item_params }.to change(Item, :count).by(1)
+      #     # end
+      #     #
+      #     # it 'responds with HTTP status 200' do
+      #     #   post :create, order_item_params
+      #     #   expect(response.status).to eq 200
+      #     # end
+      #   end
+      # end
 
       # context 'with invalid params' do
       #   context 'with duplicated title' do
@@ -178,16 +211,16 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     describe 'POST #create' do
       it 'does not create a new order' do
-        expect { post :create, order_params }.to change(Order, :count).by(0)
+        expect { post :create, order_item_params }.to change(Order, :count).by(0)
       end
 
       it 'responds with HTTP status 401' do
-        post :create, order_params
+        post :create, order_item_params
         expect(response.status).to eq 401
       end
 
       it 'renders that this page is for authorized users only' do
-        post :create, order_params
+        post :create, order_item_params
         expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Authorized users only."]}).to_json
       end
     end

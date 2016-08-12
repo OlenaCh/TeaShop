@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OrderListTest < ActiveSupport::TestCase
+class Api::V1::OrdersProductsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
