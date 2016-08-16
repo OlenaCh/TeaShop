@@ -16,4 +16,5 @@
 /.ruby-gemset
 /.rvmrc
 /.idea
+/.idea/workspace.xml
 /config/database.yml
