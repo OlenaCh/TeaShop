@@ -97,26 +97,26 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     end
 
     describe 'POST #create' do
-      # context 'with valid params' do
-      #   context 'user has no pending order yet' do
-      #     it 'creates a new order' do
-      #       expect { post :create, order_item_params }.to change(Order, :count).by(1)
-      #     end
-      #
-      #     it 'creates a new order list' do
-      #       expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
-      #     end
-      #
-      #     it 'creates a new item' do
-      #       expect { post :create, order_item_params }.to change(Item, :count).by(1)
-      #     end
-      #
-      #     it 'responds with HTTP status 200' do
-      #       post :create, order_item_params
-      #       expect(response.status).to eq 200
-      #     end
-      #   end
-      #
+      context 'with valid params' do
+        context 'user has no pending order yet' do
+          it 'creates a new order' do
+            expect { post :create, order_item_params }.to change(Order, :count).by(1)
+          end
+
+          # it 'creates a new order list' do
+          #   expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
+          # end
+          #
+          # it 'creates a new item' do
+          #   expect { post :create, order_item_params }.to change(Item, :count).by(1)
+          # end
+          #
+          # it 'responds with HTTP status 200' do
+          #   post :create, order_item_params
+          #   expect(response.status).to eq 200
+          # end
+        end
+
       #   context 'user has a pending order' do
       #     it 'does not create a new order' do
       #       expect { post :create, order_item_params }.to change(Order, :count).by(0)
@@ -135,7 +135,7 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       #     #   expect(response.status).to eq 200
       #     # end
       #   end
-      # end
+      end
 
       # context 'with invalid params' do
       #   context 'with duplicated title' do

@@ -7,20 +7,18 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    # @item = create_item
-    # user = current_user
-    # if user.current_order == nil
-    #   @order = create_order @item
-    # else
-    #   @order = update_order(user.current_order, @item)
-    # end
-    # @order_list = OrderList.new(@order.id, @item.id)
-    # @order.items << @item
-    # if @order.save && @item.save
-    #   render status: 200, json: @order
-    # else
-    #   render status: 400, json: @order.errors
-    # end
+    user = current_user
+    if user.current_order == nil
+      @order = create_order
+    else
+      @order = update_order(user.current_order)
+    end
+    @orders_product = create_connection @order.id
+    if @order.save && @orders_product.save
+      render status: 200, json: @order
+    else
+      render status: 400, json: @order.errors
+    end
   end
 
   def edit
@@ -47,28 +45,29 @@ class Api::V1::OrdersController < ApplicationController
     }, status: 401
   end
 
-  # def create_item
-  #   item = Item.new
-  #   item.amount = order_item_params[:amount]
-  #   item.product_id = Product.find(order_item_params[:product_id]).id
-  #   item
-  # end
-  #
-  # def create_order item
-  #   order = Order.new
-  #   order.subtotal = item.amount * Product.find(item.product_id).price
-  #   order.grand_total = order.subtotal
-  #   order
-  # end
-  #
-  # def update_order(id, item)
-  #   order = Order.find(id)
-  #   order.subtotal = order.subtotal + item.amount * Product.find(item.product_id).price
-  #   order.grand_total = order.grand_total + item.amount * Product.find(item.product_id).price
-  #   order
-  # end
-  #
-  # def order_item_params
-  #   params.permit(:product_id, :amount)
-  # end
+  def create_order
+    order = Order.new
+    order.subtotal = item.amount * Product.find(order_params[:product_id]).price
+    order.grand_total = order.subtotal
+    order
+  end
+
+  def update_order id
+    order = Order.find(id)
+    order.subtotal = order.subtotal + item.amount * Product.find(item.product_id).price
+    order.grand_total = order.grand_total + item.amount * Product.find(item.product_id).price
+    order
+  end
+
+  def create_connection id
+    connection = OrdersProduct.new
+    connection.amount = order_params[:amount]
+    connection.order_id = id
+    connection.product_id = Product.find(order_params[:product_id]).id
+    connection
+  end
+
+  def order_params
+    params.permit(:product_id, :amount)
+  end
 end
