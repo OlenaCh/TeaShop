@@ -25,6 +25,7 @@ gem 'omniauth'
 
 gem 'figaro'
 gem 'swagger-docs'
+# gem 'swagger-ui', :require => 'swagger'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
