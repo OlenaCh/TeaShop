@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # get 'api' => 'application#api'
+  get '/api' => redirect('/swagger/dist/index.html?url=/api/v1/api-docs.json')
+
   root to: "application#index"
 end
 

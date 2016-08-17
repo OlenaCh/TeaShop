@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
         errors: ["Authorized users only."]
     }, status: 401
   end
+
+  # def api
+  #   render layout: false
+  # end
+
 end
