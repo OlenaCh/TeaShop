@@ -81,13 +81,13 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     end
 
     describe 'GET #show' do
-      # context 'with valid params' do
-      #   it 'renders an existing product' do
-      #     get :show, id: product.id
-      #     expect(JSON.parse(response.body).to_json).to eq product.to_json
-      #   end
-      # end
-      #
+      context 'with valid params' do
+        it 'renders an existing order' do
+          get :show, id: order.id
+          expect(JSON.parse(response.body).to_json).to eq order.to_json
+        end
+      end
+
       # context 'with invalid params' do
       #   context 'with non-existing id' do
       #     it 'renders that object not found' do
