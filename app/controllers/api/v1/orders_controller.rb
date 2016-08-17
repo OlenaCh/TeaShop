@@ -1,14 +1,13 @@
 class Api::V1::OrdersController < ApplicationController
-  before_action :authenticate_admin, except: [:index]
-  before_action :authenticate_user!, only: [:index]
+  # before_action :authenticate_admin, except: [:index]
+  # before_action :authenticate_user!, only: [:index]
 
   def index
     #
   end
 
   def create
-    user = current_user
-    if user.current_order == 0
+    if current_user.current_order == 0
       @order = create_order
     else
       @order = update_order user.current_order
