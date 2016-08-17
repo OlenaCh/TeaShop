@@ -5,7 +5,7 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     product = FactoryGirl.create(:product)
   }
 
-  let!(:order_item_params) {
+  let!(:order_params) {
     order_params = { product_id: product.id, amount: 2 }
   }
 
@@ -26,12 +26,12 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     describe 'POST #create' do
       it 'responds with HTTP status 401' do
-        post :create, order_item_params
+        post :create, order_params
         expect(response.status).to eq 401
       end
 
       it 'renders that this page is for authorized users only' do
-        post :create, order_item_params
+        post :create, order_params
         expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Users only."]}).to_json
       end
     end
@@ -62,8 +62,11 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
   end
 
   describe 'authenticated user\'s paths' do
-    before(:each) do
+    let!(:user) {
       user = FactoryGirl.create(:user)
+    }
+
+    before(:each) do
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
       allow(controller).to receive(:current_user).and_return(user)
     end
@@ -100,55 +103,49 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       context 'with valid params' do
         context 'user has no pending order yet' do
           it 'creates a new order' do
-            expect { post :create, order_item_params }.to change(Order, :count).by(1)
+            expect { post :create, order_params }.to change(Order, :count).by(1)
           end
 
-          # it 'creates a new order list' do
-          #   expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
-          # end
-          #
-          # it 'creates a new item' do
-          #   expect { post :create, order_item_params }.to change(Item, :count).by(1)
-          # end
-          #
-          # it 'responds with HTTP status 200' do
-          #   post :create, order_item_params
-          #   expect(response.status).to eq 200
-          # end
+          it 'creates a new orders_product' do
+            expect { post :create, order_params }.to change(OrdersProduct, :count).by(1)
+          end
+
+          it 'responds with HTTP status 200' do
+            post :create, order_params
+            expect(response.status).to eq 200
+          end
         end
 
-      #   context 'user has a pending order' do
-      #     it 'does not create a new order' do
-      #       expect { post :create, order_item_params }.to change(Order, :count).by(0)
-      #     end
-      #
-      #     # it 'creates a new order list' do
-      #     #   expect { post :create, order_item_params }.to change(OrderList, :count).by(1)
-      #     # end
-      #     #
-      #     # it 'creates a new item' do
-      #     #   expect { post :create, order_item_params }.to change(Item, :count).by(1)
-      #     # end
-      #     #
-      #     # it 'responds with HTTP status 200' do
-      #     #   post :create, order_item_params
-      #     #   expect(response.status).to eq 200
-      #     # end
-      #   end
+        context 'user has a pending order' do
+          before(:each) do
+            user.current_order = order.id
+          end
+
+          it 'does not create a new order' do
+            expect { post :create, order_params }.to change(Order, :count).by(0)
+          end
+
+          it 'creates a new orders_product' do
+            expect { post :create, order_params }.to change(OrdersProduct, :count).by(1)
+          end
+
+          it 'responds with HTTP status 200' do
+            post :create, order_params
+            expect(response.status).to eq 200
+          end
+        end
       end
 
-      # context 'with invalid params' do
-      #   context 'with duplicated title' do
-      #     it 'does not create a new product' do
-      #       expect { post :create, product_params.merge({title: product.title}) }.to change(Product, :count).by(0)
-      #     end
-      #
-      #     it 'responds with HTTP status 400' do
-      #       post :create, product_params.merge({title: product.title})
-      #       expect(response.status).to eq 400
-      #     end
-      #   end
-      # end
+      context 'with invalid params' do
+        it 'does not create a new order' do
+          expect { post :create, amount: -1, product_id: product.id }.to change(Order, :count).by(0)
+        end
+
+        it 'responds with HTTP status 400' do
+          post :create, amount: -1, product_id: product.id
+          expect(response.status).to eq 400
+        end
+      end
     end
 
     describe 'GET #edit' do
@@ -211,16 +208,16 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
 
     describe 'POST #create' do
       it 'does not create a new order' do
-        expect { post :create, order_item_params }.to change(Order, :count).by(0)
+        expect { post :create, order_params }.to change(Order, :count).by(0)
       end
 
       it 'responds with HTTP status 401' do
-        post :create, order_item_params
+        post :create, order_params
         expect(response.status).to eq 401
       end
 
       it 'renders that this page is for authorized users only' do
-        post :create, order_item_params
+        post :create, order_params
         expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Authorized users only."]}).to_json
       end
     end

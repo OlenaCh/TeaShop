@@ -8,10 +8,10 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     user = current_user
-    if user.current_order == nil
+    if user.current_order == 0
       @order = create_order
     else
-      @order = update_order(user.current_order)
+      @order = update_order user.current_order
     end
     @orders_product = create_connection @order.id
     if @order.save && @orders_product.save
@@ -47,21 +47,21 @@ class Api::V1::OrdersController < ApplicationController
 
   def create_order
     order = Order.new
-    order.subtotal = item.amount * Product.find(order_params[:product_id]).price
-    order.grand_total = order.subtotal
+    order.subtotal = order_params[:amount].to_i * Product.find(order_params[:product_id]).price
+    order.grand_total = order.subtotal + order.shipment
     order
   end
 
   def update_order id
     order = Order.find(id)
-    order.subtotal = order.subtotal + item.amount * Product.find(item.product_id).price
-    order.grand_total = order.grand_total + item.amount * Product.find(item.product_id).price
+    order.subtotal = order.subtotal + order_params[:amount].to_i * Product.find(order_params[:product_id]).price
+    order.grand_total = order.grand_total + order_params[:amount].to_i * Product.find(order_params[:product_id]).price
     order
   end
 
   def create_connection id
     connection = OrdersProduct.new
-    connection.amount = order_params[:amount]
+    connection.amount = order_params[:amount].to_i
     connection.order_id = id
     connection.product_id = Product.find(order_params[:product_id]).id
     connection
