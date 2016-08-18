@@ -1,7 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
   include Docs::Api::V1::ProductsController
-  before_action :authenticate_admin, except: [:show, :index]
-  before_action :authenticate_user!, only: [:show, :index]
+  # before_action :authenticate_admin, except: [:show, :index]
+  # before_action :authenticate_user!, only: [:show, :index]
 
   def create
     @product = Product.new product_params
