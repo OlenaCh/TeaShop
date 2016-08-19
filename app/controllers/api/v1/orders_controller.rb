@@ -12,22 +12,27 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     subtotal = 0
-    total = 0
+    ctr=0
+    order_array=[]
     current_user = User.find_by_email(params[:email])
     @order = current_user.orders.create(shipment: order_params[:shipment].to_i)
-    products = order_params[:products]
-    products.each do |item|
-      details = item.last
-      product_id = details[:id].to_i
-      product_amount = details[:amount].to_i
-      @order.orders_products.create(product_id: product_id, amount: product_amount)
-      subtotal = subtotal + product_amount * Product.find_by_id(product_id).price
-      total = order_params[:shipment].to_i + subtotal
+    order_params[:products].each do |item|
+      @a = @order.orders_products.new(product_id: item.last[:id].to_i, amount: item.last[:amount].to_i)
+      if !@a.save
+        ctr +=1
+      else
+      subtotal = subtotal + item.last[:amount].to_i * Product.find_by_id(item.last[:id].to_i).price
+        order_array <<@a
+      end
     end
+    total = order_params[:shipment].to_i + subtotal
     @order.update(subtotal: subtotal, grand_total: total)
-    if @order.save
+    if @order.save && ctr==0
       render status: 200, json: @order
     else
+      order_array.each do |order|
+      order.destroy
+      end
       render status: 400, json: @order.errors
     end
   end
