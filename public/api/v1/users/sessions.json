@@ -46,6 +46,56 @@
           "method": "post"
         }
       ]
+    },
+    {
+      "path": "/sign_out",
+      "operations": [
+        {
+          "summary": "Deletes an existing Session on log out",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Success"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Api::V1::Users::Sessions#destroy",
+          "method": "delete"
+        }
+      ]
     }
   ],
   "authorizations": null

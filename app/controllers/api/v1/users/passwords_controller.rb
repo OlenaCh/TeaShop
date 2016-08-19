@@ -1,4 +1,5 @@
 class Api::V1::Users::PasswordsController < DeviseTokenAuth::PasswordsController
+  include Docs::Api::V1::PasswordsController
   before_action :authenticate_user_email, only: [:create]
 
   private
