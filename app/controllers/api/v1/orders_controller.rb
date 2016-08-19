@@ -15,15 +15,15 @@ class Api::V1::OrdersController < ApplicationController
     current_user = User.find_by_email(params[:email])
     @order = current_user.orders.create(shipment: order_params[:shipment].to_i)
     order_params[:products].each do |item|
-      @order.orders_products.create(product_id: item.last[:id].to_i, amount: item.last[:amount].to_i)
+      @object = @order.orders_products.create(product_id: item.last[:id].to_i, amount: item.last[:amount].to_i)
       subtotal = subtotal + item.last[:amount].to_i * Product.find_by_id(item.last[:id].to_i).price
     end
     @order.update(subtotal: subtotal, grand_total: order_params[:shipment].to_i + subtotal)
     if @order.save
       render status: 200, json: @order
     else
-      # @order.orders_products.destroy
-      render status: 400, json: @order.errors #{ errors: ["No order created!"] }
+      @order.destroy
+      render status: 400, json: { errors: ["No order created!"] }
     end
   end
 
