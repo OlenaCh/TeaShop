@@ -7,7 +7,6 @@ FactoryGirl.define do
     sequence(:email) { |n| "email_#{n}@test.com" }
     sequence(:password) { |n| "#{n}"*8 }
     role 'user'
-    current_order 0
   end
 
   factory :admin, class: User do

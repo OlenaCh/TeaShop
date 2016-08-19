@@ -1,6 +1,6 @@
 class Api::V1::OrdersController < ApplicationController
-  # before_action :authenticate_admin, except: [:index]
-  # before_action :authenticate_user!, only: [:index]
+  before_action :authenticate_admin, except: [:create]
+  before_action :authenticate_user!, only: [:create]
 
   def index
     @list = Array.new
@@ -28,7 +28,6 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     subtotal = 0
-    current_user = User.find_by_email(params[:email])
     @order = current_user.orders.create(shipment: create_params[:shipment].to_i)
     create_params[:products].each do |item|
       @object = @order.orders_products.create(product_id: item.last[:id].to_i, amount: item.last[:amount].to_i)
@@ -57,28 +56,14 @@ class Api::V1::OrdersController < ApplicationController
     @order = Order.find_by_id(params[:id])
     if @order
       @order.destroy
-      # redirect_to api_v1_orders_path, format: :json
-      render status: 200, json: { notice: ['Success'] }
+      redirect_to api_v1_orders_path, format: :json
+      # render status: 200, json: { notice: ['Success'] }
     else
       render_not_found 'Object not found'
     end
   end
 
   private
-
-  def authenticate_admin
-    if current_user
-      render_admin_authorization_error if current_user.role != 'user'
-    else
-      render_authorization_error
-    end
-  end
-
-  def render_admin_authorization_error
-    render json: {
-        errors: ['Users only.']
-    }, status: 401
-  end
 
   def create_params
     params.permit(:shipment, products: [:id, :amount])

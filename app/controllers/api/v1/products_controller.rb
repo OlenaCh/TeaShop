@@ -1,7 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
   include Docs::Api::V1::ProductsController
-  # before_action :authenticate_admin, except: [:show, :index]
-  # before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_admin, except: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index]
 
   def create
     @product = Product.new product_params
@@ -55,20 +55,6 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   private
-
-  def authenticate_admin
-    if current_user
-      render_admin_authorization_error if current_user.role != 'admin'
-    else
-      render_authorization_error
-    end
-  end
-
-  def render_admin_authorization_error
-    render json: {
-        errors: ["Admins only."]
-    }, status: 401
-  end
 
   def product_params
     params.permit(:title, :short_description, :long_description,
