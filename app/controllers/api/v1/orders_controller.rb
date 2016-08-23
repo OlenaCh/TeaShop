@@ -13,17 +13,6 @@ class Api::V1::OrdersController < ApplicationController
         item << order_product << Product.find_by_id(order_product.product_id)
       end
     end
-    # @orders.each do |order|
-    #   items = order.orders_products
-    #   items.each do |item|
-    #     id = order.order_id
-    #     product = Product.find_by_id(item.product_id)
-    #     title = product.title
-    #     price = order.orders_products.amount * product.price
-    #     @list << Hash.new(:id => id, :title => title, :price => price)
-    #   end
-    # end
-    render json: @list
   end
 
   def create

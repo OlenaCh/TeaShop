@@ -1,5 +1,5 @@
 module Docs::Api::V1
-  module ProductsController
+  module PasswordsController
     extend ActiveSupport::Concern
 
     included do

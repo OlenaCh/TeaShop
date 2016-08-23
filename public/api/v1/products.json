@@ -9,7 +9,29 @@
       "operations": [
         {
           "summary": "Fetches all Product items",
-          "notes": "This lists all products",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 200,
@@ -27,6 +49,7 @@
               "message": "Not Found"
             }
           ],
+          "notes": "This lists all products",
           "nickname": "Api::V1::Products#index",
           "method": "get"
         }
@@ -37,6 +60,64 @@
       "operations": [
         {
           "summary": "Creates a new Product",
+          "parameters": [
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "short_description",
+              "type": "string",
+              "description": "Short description",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "long_description",
+              "type": "string",
+              "description": "Long description",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "integer",
+              "description": "Price",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "image",
+              "type": "file",
+              "description": "Image",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 200,
@@ -52,43 +133,6 @@
               "code": 401,
               "responseModel": null,
               "message": "Unauthorized"
-            }
-          ],
-          "parameters": [
-            {
-              "paramType": "form",
-              "name": "product[title]",
-              "type": "string",
-              "description": "Title",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[short_description]",
-              "type": "string",
-              "description": "Short description",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[long_description]",
-              "type": "string",
-              "description": "Long description",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[price]",
-              "type": "integer",
-              "description": "Price",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[image]",
-              "type": "file",
-              "description": "Image",
-              "required": false
             }
           ],
           "nickname": "Api::V1::Products#create",
@@ -101,6 +145,36 @@
       "operations": [
         {
           "summary": "Fetches a single Product item for edit",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Product Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 200,
@@ -116,15 +190,6 @@
               "code": 404,
               "responseModel": null,
               "message": "Not Found"
-            }
-          ],
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Product Id",
-              "required": true
             }
           ],
           "nickname": "Api::V1::Products#edit",
@@ -137,6 +202,36 @@
       "operations": [
         {
           "summary": "Fetches a single Product",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Product Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 200,
@@ -154,15 +249,6 @@
               "message": "Not Found"
             }
           ],
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Product Id",
-              "required": true
-            }
-          ],
           "nickname": "Api::V1::Products#show",
           "method": "get"
         }
@@ -173,6 +259,71 @@
       "operations": [
         {
           "summary": "Updates an existing Product",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Product Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "title",
+              "type": "string",
+              "description": "Title",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "short_description",
+              "type": "string",
+              "description": "Short description",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "long_description",
+              "type": "string",
+              "description": "Long description",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "price",
+              "type": "integer",
+              "description": "Price",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "image",
+              "type": "file",
+              "description": "Image",
+              "required": false
+            },
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 200,
@@ -190,50 +341,6 @@
               "message": "Not Found"
             }
           ],
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Product Id",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[title]",
-              "type": "string",
-              "description": "Title",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[short_description]",
-              "type": "string",
-              "description": "Short description",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[long_description]",
-              "type": "string",
-              "description": "Long description",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[price]",
-              "type": "integer",
-              "description": "Price",
-              "required": true
-            },
-            {
-              "paramType": "form",
-              "name": "product[image]",
-              "type": "file",
-              "description": "Image",
-              "required": false
-            }
-          ],
           "nickname": "Api::V1::Products#update",
           "method": "patch"
         }
@@ -244,6 +351,36 @@
       "operations": [
         {
           "summary": "Deletes an existing Product item",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "integer",
+              "description": "Product Id",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "uid",
+              "type": "string",
+              "description": "uid - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "access-token",
+              "type": "string",
+              "description": "access-token - get at session creation",
+              "required": true
+            },
+            {
+              "paramType": "form",
+              "name": "client",
+              "type": "string",
+              "description": "client - get at session creation",
+              "required": true
+            }
+          ],
           "responseMessages": [
             {
               "code": 302,
@@ -259,15 +396,6 @@
               "code": 404,
               "responseModel": null,
               "message": "Not Found"
-            }
-          ],
-          "parameters": [
-            {
-              "paramType": "path",
-              "name": "id",
-              "type": "integer",
-              "description": "Product Id",
-              "required": true
             }
           ],
           "nickname": "Api::V1::Products#destroy",
