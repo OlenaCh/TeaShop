@@ -13,7 +13,10 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def index
-    render json: Product.all
+    @products=Product.all
+    render json: {
+        products: @products.order(sort_column + ' ' + sort_direction).page(params[:page]).per(count)
+    }
   end
 
   def edit
@@ -59,5 +62,17 @@ class Api::V1::ProductsController < ApplicationController
   def product_params
     params.permit(:title, :short_description, :long_description,
                   :price, :exists, :image)
+  end
+
+  def sort_column
+    params[:sort] || 'title'
+  end
+
+  def count
+    params[:count]
+  end
+
+  def sort_direction
+    (!params[:direction].present? || params[:direction] == 'asc') ? 'asc' : 'desc'
   end
 end

@@ -25,8 +25,10 @@ gem 'omniauth'
 
 gem 'figaro'
 gem 'swagger-docs'
-# gem 'swagger-ui', :require => 'swagger'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Pagination
+gem 'kaminari'
 
 group :development do
   gem 'web-console', '~> 2.0'
