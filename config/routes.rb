@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  mount_devise_token_auth_for 'User', at: 'api/v1',
+  mount_devise_token_auth_for 'User', at: '/auth',
       controllers: {
       registrations:  'api/v1/users/registrations',
       sessions:       'api/v1/users/sessions',

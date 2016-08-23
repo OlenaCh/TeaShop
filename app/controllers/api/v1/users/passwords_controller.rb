@@ -2,6 +2,14 @@ class Api::V1::Users::PasswordsController < DeviseTokenAuth::PasswordsController
   include Docs::Api::V1::PasswordsController
   before_action :authenticate_user_email, only: [:create]
 
+  def create
+    super
+  end
+
+  def edit
+    super
+  end
+
   private
   def authenticate_user_email
     user = User.find_by_email params[:email]

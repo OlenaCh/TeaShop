@@ -8,6 +8,10 @@
       "description": "Manages User session"
     },
     {
+      "path": "/users/passwords.{format}",
+      "description": "Password management"
+    },
+    {
       "path": "/users/registrations.{format}",
       "description": "All users"
     },

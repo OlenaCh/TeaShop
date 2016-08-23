@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 
+#pagination
+gem 'kaminari'
+
 # JSON API
 gem 'jbuilder', '~> 2.0'
 

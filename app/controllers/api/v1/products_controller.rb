@@ -1,7 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
   include Docs::Api::V1::ProductsController
-  # before_action :authenticate_admin, except: [:show, :index]
-  # before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_admin, except: [:show, :index]
+  before_action :authenticate_user!, only: [:show, :index]
 
   def create
     @product = Product.new product_params
@@ -13,7 +13,10 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def index
-    render json: Product.all
+    @products=Product.all
+
+    render json: { products: @products.order(sort_column + ' ' + sort_direction).page(params[:page]).per(count)
+    }
   end
 
   def edit
@@ -66,7 +69,7 @@ class Api::V1::ProductsController < ApplicationController
 
   def render_admin_authorization_error
     render json: {
-        errors: ["Admins only."]
+        errors: ['Admins only.']
     }, status: 401
   end
 
@@ -74,4 +77,17 @@ class Api::V1::ProductsController < ApplicationController
     params.permit(:title, :short_description, :long_description,
                   :price, :exists, :image)
   end
+
+  def sort_column
+    params[:sort] || 'title'
+  end
+
+  def count
+    params[:count]
+  end
+
+  def sort_direction
+    (!params[:direction].present? || params[:direction] == 'desc') ? 'desc' : 'asc'
+  end
+
 end
