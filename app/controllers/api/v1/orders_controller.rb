@@ -1,10 +1,10 @@
 class Api::V1::OrdersController < ApplicationController
-  before_action :authenticate_admin, except: [:create]
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_admin, except: [:create, :show]
+  before_action :authenticate_user!, only: [:create, :show]
+  before_action :for_users_only, only: [:create, :show]
 
   def index
     @list = Array.new
-    # @orders = Order.all.orders_products
     @orders = Order.all
     @orders.each do |order|
       @list << order
@@ -53,6 +53,12 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   private
+
+  def for_users_only
+    render json: {
+        errors: ["Users only."]
+    }, status: 401 if current_user.role != 'user'
+  end
 
   def create_params
     params.permit(:shipment, products: [:id, :amount])

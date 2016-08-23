@@ -24,17 +24,17 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       #
     end
 
-    # describe 'POST #create' do
-    #   it 'responds with HTTP status 401' do
-    #     post :create, order_params
-    #     expect(response.status).to eq 401
-    #   end
-    #
-    #   it 'renders that this page is for authorized users only' do
-    #     post :create, order_params
-    #     expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Users only."]}).to_json
-    #   end
-    # end
+    describe 'POST #create' do
+      it 'responds with HTTP status 401' do
+        post :create, order_params
+        expect(response.status).to eq 401
+      end
+
+      it 'renders that this page is for authorized users only' do
+        post :create, order_params
+        expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Users only."]}).to_json
+      end
+    end
 
     describe 'PUT #update' do
       context 'with valid params' do
@@ -52,15 +52,15 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
         # end
       end
 
-      # context 'with invalid params' do
-      #   context 'with non-existing id' do
-      #     it 'renders that object not found' do
-      #       put :update, id: -(product.id)
-      #       expect(response.status).to eq 404
-      #       expect(response.body).to have_text('Object not found')
-      #     end
-      #   end
-      # end
+      context 'with invalid params' do
+        context 'with non-existing id' do
+          it 'renders that object not found' do
+            put :update, id: -(order.id), status: 'Completed'
+            expect(response.status).to eq 404
+            expect(response.body).to have_text('Object not found')
+          end
+        end
+      end
     end
 
     describe 'DELETE #destroy' do
