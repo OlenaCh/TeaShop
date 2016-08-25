@@ -55,7 +55,7 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
         another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
                                      :long_description => 'Very tasty tea', :price => '30.0')
         get :index, sort: 'price'
-        expect(JSON.parse(response.body).to_json).to have_content([product, another_one].to_json)
+        expect(JSON.parse(response.body).to_json).to have_content([another_one, product].to_json)
       end
     end
 

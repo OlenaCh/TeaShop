@@ -18,3 +18,6 @@
 /.idea
 /.idea/workspace.xml
 /config/database.yml
+
+# Ignore application configuration
+/config/application.yml
