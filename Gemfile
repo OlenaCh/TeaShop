@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'figaro'
 gem 'swagger-docs'

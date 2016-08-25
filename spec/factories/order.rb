@@ -3,8 +3,9 @@ FactoryGirl.define do
     shipment 80.0
     subtotal 10.0
     grand_total 0.0
-    # after(:create) { |order|
-    #   order.orders_products << FactoryGirl.create(:orders_product)
-    # }
+
+    after(:create) { |order|
+      order.orders_products << FactoryGirl.create(:orders_product)
+    }
   end
 end

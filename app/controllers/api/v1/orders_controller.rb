@@ -6,13 +6,14 @@ class Api::V1::OrdersController < ApplicationController
   def index
     @list = Array.new
     @orders = Order.all
-    @orders.each do |order|
-      @list << order
+    @orders.each do |order|      
       order.orders_products.each do |order_product|
-        item = Array.new
-        item << order_product << Product.find_by_id(order_product.product_id)
-      end
+        @item = Array.new
+        @item << order_product << Product.find_by_id(order_product.product_id)        
+      end 
+      @list << order << @item     
     end
+    render json: @list
   end
 
   def create
@@ -46,7 +47,6 @@ class Api::V1::OrdersController < ApplicationController
     if @order
       @order.destroy
       redirect_to api_v1_orders_path, format: :json
-      # render status: 200, json: { notice: ['Success'] }
     else
       render_not_found 'Object not found'
     end

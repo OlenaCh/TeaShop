@@ -21,7 +21,10 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     end
 
     describe 'GET #index' do
-      #
+      it 'renders all orders in database' do
+        get :index        
+        expect(JSON.parse(response.body).to_json).to have_content(order.to_json)
+      end
     end
 
     describe 'POST #create' do
