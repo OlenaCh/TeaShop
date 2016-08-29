@@ -1,7 +1,4 @@
-class Order < ActiveRecord::Base
-  belongs_to :user
-  
-  has_one  :shipment, dependent: :destroy
+class Order < ActiveRecord::Base  
   has_many :orders_products, dependent: :destroy
   has_many :products, through: :orders_products
 

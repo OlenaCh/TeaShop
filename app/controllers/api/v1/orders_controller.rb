@@ -18,12 +18,13 @@ class Api::V1::OrdersController < ApplicationController
 
   def create
     subtotal = 0
-    @order = current_user.orders.create(shipment: create_params[:shipment].to_i)
+    shipment = Shipment.find_by_id(create_params[:shipment_id])
+    @order = current_user.orders.create(shipment_id: shipment.id, address_id: create_params[:address_id])
     create_params[:products].each do |item|
       @object = @order.orders_products.create(product_id: item.last[:id].to_i, amount: item.last[:amount].to_i)
       subtotal = subtotal + item.last[:amount].to_i * Product.find_by_id(item.last[:id].to_i).price
     end
-    @order.update(subtotal: subtotal, grand_total: create_params[:shipment].to_i + subtotal)
+    @order.update(subtotal: subtotal, grand_total: shipment.price + subtotal)
     if @order.save
       render status: 200, json: @order
     else
@@ -46,7 +47,8 @@ class Api::V1::OrdersController < ApplicationController
     @order = Order.find_by_id(params[:id])
     if @order
       @order.destroy
-      redirect_to api_v1_orders_path, format: :json
+      render status: 200, json: { notice: ['Success!'] }
+      # redirect_to api_v1_orders_path, format: :json
     else
       render_not_found 'Object not found'
     end
@@ -61,7 +63,7 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create_params
-    params.permit(:shipment, products: [:id, :amount])
+    params.permit(:shipment_id, :address_id, products: [:id, :amount])
   end
 
   def update_params
