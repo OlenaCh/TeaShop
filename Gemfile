@@ -25,10 +25,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'figaro'
 gem 'swagger-docs'
-# gem 'swagger-ui', :require => 'swagger'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
@@ -38,6 +38,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
 end
 
 group :test do

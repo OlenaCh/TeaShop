@@ -10,6 +10,7 @@ before_action :authenticate_user!, only: [:index]
       order.orders_products.each do |order_product|
         item = Array.new
         item << order_product << Product.find_by_id(order_product.product_id)
+        order<<item
       end
     end
   end

@@ -87,7 +87,7 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def sort_direction
-    (!params[:direction].present? || params[:direction] == 'desc') ? 'desc' : 'asc'
+    (!params[:direction].present? || params[:direction] == 'asc') ? 'asc' : 'desc'
   end
 
 end
