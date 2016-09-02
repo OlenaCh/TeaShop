@@ -1,7 +1,7 @@
 class Api::V1::OrdersController < ApplicationController
-  # before_action :authenticate_admin, except: [:create, :show]
-  # before_action :authenticate_user!, only: [:create, :show]
-  # before_action :for_users_only, only: [:create, :show]
+  before_action :authenticate_admin, except: [:create, :show]
+  before_action :authenticate_user!, only: [:create, :show]
+  before_action :for_users_only, only: [:create, :show]
 
   def index
     @list = Array.new
@@ -17,7 +17,8 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    subtotal = 0    
+    subtotal = 0 
+    # current_user = User.find_by_email('olena.chernilevska@gmail.com')   
     shipment = Shipment.find_by_id(create_params[:shipment_id])
     @order = current_user.orders.create(shipment_id: shipment.id, address_id: create_params[:address_id])
     create_params[:products].each do |item|
