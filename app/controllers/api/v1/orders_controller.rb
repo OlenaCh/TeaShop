@@ -1,18 +1,16 @@
 class Api::V1::OrdersController < ApplicationController
-  before_action :authenticate_admin, except: [:create, :show]
-  before_action :authenticate_user!, only: [:create, :show]
-  before_action :for_users_only, only: [:create, :show]
+  before_action :authenticate_admin, only: [:update]
+  before_action :authenticate_user!, except: [:update]
+  before_action :for_users_only, only: [:create]
+  before_action :can_be_destroyed?, only: [:destroy]
 
   def index
     @list = Array.new
-    @orders = Order.all
-    @item = Array.new 
-    @orders.each do |order|
-      @list << User.find_by_id(order.user_id) << order << Address.find_by_id(order.address_id)
-      order.orders_products.each do |order_product|  
-        @list << order_product << Product.find_by_id(order_product.product_id)
-      end 
-    end
+    if current_user.role == 'admin'
+      @list = orders_list_for_admin
+    else
+      @list = orders_list_for_user current_user.id
+    end          
     render json: @list
   end
 
@@ -57,6 +55,40 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   private
+
+  def orders_list_for_admin
+    list = Array.new
+    orders = Order.all
+    item = Array.new 
+    orders.each do |order|
+      list << User.find_by_id(order.user_id) << order << Address.find_by_id(order.address_id)
+      order.orders_products.each do |order_product|  
+        list << order_product << Product.find_by_id(order_product.product_id)
+      end 
+    end
+    list
+  end
+
+  def orders_list_for_user id
+    list = Array.new
+    orders = Order.find_by_user_id(id)
+    item = Array.new 
+    orders.each do |order|
+      list << order << Address.find_by_id(order.address_id)
+      order.orders_products.each do |order_product|  
+        list << order_product << Product.find_by_id(order_product.product_id)
+      end 
+    end
+    list
+  end
+
+  def can_be_destroyed
+    if current_user.role == 'user' && Order.find_by_id(params[:id]).user_id != current_user.id 
+      render json: {
+        errors: ["You are not authorized to destroy this order!"]
+      }, status: 401
+    end
+  end
 
   def create_params
     params.permit(:shipment_id, :address_id, products: [:id, :amount])

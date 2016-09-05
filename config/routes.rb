@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :orders
       resources :shipments, only: [:index]
       resources :addresses, only: [:index, :create]
+      resources :users, except: [:index]
     end
   end
 

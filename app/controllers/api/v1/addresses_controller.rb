@@ -13,6 +13,12 @@ class Api::V1::AddressesController < ApplicationController
   	address.update(is_default: true) if current_user.addresses.count == 1
   end
 
+  def update
+  end
+
+  def destroy
+  end
+
   private
 
   def address_params
