@@ -9,14 +9,23 @@ class ApplicationController < ActionController::Base
     }, status: 404
   end
 
+  def authenticate_admin
+    if current_user
+      render_admin_authorization_error if current_user.role != 'admin'
+    else
+      render_authorization_error
+    end
+  end
+
+  def render_admin_authorization_error
+    render json: {
+        errors: ["Admins only."]
+    }, status: 401
+  end
+
   def render_authorization_error
     render json: {
         errors: ["Authorized users only."]
     }, status: 401
   end
-
-  # def api
-  #   render layout: false
-  # end
-
 end

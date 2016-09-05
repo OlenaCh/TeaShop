@@ -3,6 +3,6 @@ FactoryGirl.define do
     sequence(:title) { |n| "#{n}_title" }
     short_description 'Tea'
     long_description 'Very good tea'
-    sequence(:price) { |n| "#{n}" + ".0" }
+    price 1000.0
   end
 end

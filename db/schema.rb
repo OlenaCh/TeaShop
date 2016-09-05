@@ -11,10 +11,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804135208) do
+ActiveRecord::Schema.define(version: 20160829102324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "city",       default: ""
+    t.string   "zip_code",   default: ""
+    t.string   "address",    default: ""
+    t.boolean  "is_default", default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "shipment_id"
+    t.integer  "address_id"
+    t.float    "subtotal",    default: 0.0,       null: false
+    t.float    "grand_total", default: 0.0,       null: false
+    t.string   "status",      default: "Pending", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "orders_products", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.integer  "amount",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "orders_products", ["order_id"], name: "index_orders_products_on_order_id", using: :btree
+  add_index "orders_products", ["product_id"], name: "index_orders_products_on_product_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.string   "short_description"
+    t.string   "long_description"
+    t.float    "price"
+    t.boolean  "exists",            default: true
+    t.binary   "image"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "shipments", force: :cascade do |t|
+    t.string   "title",                     null: false
+    t.string   "description"
+    t.float    "price",       default: 0.0, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",               default: "email", null: false
@@ -27,9 +82,6 @@ ActiveRecord::Schema.define(version: 20160804135208) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
-    t.string   "zip_code"
-    t.string   "city"
-    t.string   "address"
     t.string   "email"
     t.json     "tokens"
     t.datetime "created_at"

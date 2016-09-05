@@ -43,6 +43,22 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
       end
     end
 
+    describe 'GET #index' do
+      it 'renders all products in database' do
+        another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
+                                     :long_description => 'Very tasty tea', :price => '30.0')
+        get :index
+        expect(JSON.parse(response.body).to_json).to have_content([product, another_one].to_json)
+      end
+
+      it 'renders all products in database by price' do
+        another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
+                                     :long_description => 'Very tasty tea', :price => '30.0')
+        get :index, sort: 'price'
+        expect(JSON.parse(response.body).to_json).to have_content([another_one, product].to_json)
+      end
+    end
+
     describe 'GET #edit' do
       context 'with valid params' do
         it 'renders an existing product' do
@@ -131,7 +147,14 @@ RSpec.describe Api::V1::ProductsController, type: :controller do
         another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
                                      :long_description => 'Very tasty tea', :price => '30.0')
         get :index
-        expect(JSON.parse(response.body).to_json).to eq [product, another_one].to_json
+        expect(JSON.parse(response.body).to_json).to have_content([product, another_one].to_json)
+      end
+
+      it 'renders all products in database by price' do
+        another_one = Product.create(:title => 'Indian Tea', :short_description => 'Green tea',
+                                     :long_description => 'Very tasty tea', :price => '30.0')
+        get :index, sort: 'price'
+        expect(JSON.parse(response.body).to_json).to have_content([another_one, product].to_json)
       end
     end
 

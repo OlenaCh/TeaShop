@@ -14,8 +14,8 @@ class Api::V1::ProductsController < ApplicationController
 
   def index
     @products=Product.all
-
-    render json: { products: @products.order(sort_column + ' ' + sort_direction).page(params[:page]).per(count)
+    render json: {
+        products: @products.order(sort_column + ' ' + sort_direction).page(params[:page]).per(count)
     }
   end
 
@@ -59,20 +59,6 @@ class Api::V1::ProductsController < ApplicationController
 
   private
 
-  def authenticate_admin
-    if current_user
-      render_admin_authorization_error if current_user.role != 'admin'
-    else
-      render_authorization_error
-    end
-  end
-
-  def render_admin_authorization_error
-    render json: {
-        errors: ['Admins only.']
-    }, status: 401
-  end
-
   def product_params
     params.permit(:title, :short_description, :long_description,
                   :price, :exists, :image)
@@ -89,5 +75,4 @@ class Api::V1::ProductsController < ApplicationController
   def sort_direction
     (!params[:direction].present? || params[:direction] == 'asc') ? 'asc' : 'desc'
   end
-
 end

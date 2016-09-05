@@ -13,10 +13,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'turbolinks'
-
-#pagination
-gem 'kaminari'
 
 # JSON API
 gem 'jbuilder', '~> 2.0'
@@ -26,10 +22,14 @@ gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'figaro'
 gem 'swagger-docs'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Pagination
+gem 'kaminari'
 
 group :development do
   gem 'web-console', '~> 2.0'
