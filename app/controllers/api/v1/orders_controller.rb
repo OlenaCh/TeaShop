@@ -2,7 +2,7 @@ class Api::V1::OrdersController < ApplicationController
   before_action :authenticate_admin, only: [:update]
   before_action :authenticate_user!, except: [:update]
   before_action :for_users_only, only: [:create]
-  before_action :can_be_destroyed?, only: [:destroy]
+  # before_action :order_can_be_destroyed?, only: [:destroy]
 
   def index
     @list = Array.new
@@ -43,16 +43,16 @@ class Api::V1::OrdersController < ApplicationController
     end
   end
 
-  def destroy
-    @order = Order.find_by_id(params[:id])
-    if @order
-      @order.destroy
-      # render status: 200, json: { notice: ['Success!'] }
-      redirect_to api_v1_orders_path, format: :json
-    else
-      render_not_found 'Object not found'
-    end
-  end
+  # def destroy
+  #   @order = Order.find_by_id(params[:id])
+  #   if @order
+  #     @order.destroy
+  #     # render status: 200, json: { notice: ['Success!'] }
+  #     redirect_to api_v1_orders_path, format: :json
+  #   else
+  #     render_not_found 'Object not found'
+  #   end
+  # end
 
   private
 
@@ -82,13 +82,13 @@ class Api::V1::OrdersController < ApplicationController
     list
   end
 
-  def can_be_destroyed
-    if current_user.role == 'user' && Order.find_by_id(params[:id]).user_id != current_user.id 
-      render json: {
-        errors: ["You are not authorized to destroy this order!"]
-      }, status: 401
-    end
-  end
+  # def order_can_be_destroyed?
+  #   if current_user.role == 'user' && Order.find_by_id(params[:id]).user_id != current_user.id 
+  #     render json: {
+  #       errors: ["You are not authorized to destroy this order!"]
+  #     }, status: 401
+  #   end
+  # end
 
   def create_params
     params.permit(:shipment_id, :address_id, products: [:id, :amount])

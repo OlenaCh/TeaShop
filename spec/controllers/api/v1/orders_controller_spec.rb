@@ -76,35 +76,35 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       end
     end
 
-    describe 'DELETE #destroy' do
-      context 'with valid params' do
-        it 'deletes an existing order' do
-          expect { delete :destroy, id: order.id }.to change(Order, :count).by(-1)
-        end
+    # describe 'DELETE #destroy' do
+    #   context 'with valid params' do
+    #     it 'deletes an existing order' do
+    #       expect { delete :destroy, id: order.id }.to change(Order, :count).by(-1)
+    #     end
 
-        it 'responds with HTTP status 302' do
-          allow(@order).to receive(:destroy).and_return(true)
-          delete :destroy, id: order.id
-          expect(response.status).to eq 302
-        end
+    #     it 'responds with HTTP status 302' do
+    #       allow(@order).to receive(:destroy).and_return(true)
+    #       delete :destroy, id: order.id
+    #       expect(response.status).to eq 302
+    #     end
 
-        it 'redirects to index page' do
-          allow(@order).to receive(:destroy).and_return(true)
-          delete :destroy, id: order.id
-          expect(response).to redirect_to api_v1_orders_path
-        end
-      end
+    #     it 'redirects to index page' do
+    #       allow(@order).to receive(:destroy).and_return(true)
+    #       delete :destroy, id: order.id
+    #       expect(response).to redirect_to api_v1_orders_path
+    #     end
+    #   end
 
-      context 'with invalid params' do
-        context 'with non-existing id' do
-          it 'renders that object not found' do
-            delete :destroy, id: -(order.id)
-            expect(response.status).to eq 404
-            expect(response.body).to have_text('Object not found')
-          end
-        end
-      end
-    end
+    #   context 'with invalid params' do
+    #     context 'with non-existing id' do
+    #       it 'renders that object not found' do
+    #         delete :destroy, id: -(order.id)
+    #         expect(response.status).to eq 404
+    #         expect(response.body).to have_text('Object not found')
+    #       end
+    #     end
+    #   end
+    # end
   end
 
   describe 'authenticated user\'s paths' do
@@ -112,17 +112,16 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       user = FactoryGirl.create(:user)
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
       allow(controller).to receive(:current_user).and_return(user)
+      order.user_id = user.id
     end
 
     describe 'GET index' do
-      it 'responds with HTTP status 401' do
-        get :index
-        expect(response.status).to eq 401
-      end
-
-      it 'renders that this page is for authorized users only' do
-        get :index
-        expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Admins only."]}).to_json
+      it 'renders all orders which belong to a current user' do
+        order2 = FactoryGirl.create(:order)
+        
+        get :index        
+        expect(JSON.parse(response.body).to_json).to have_content(order.to_json)
+        expect(JSON.parse(response.body).to_json).to have_no_content(order2.to_json)
       end
     end
 
@@ -155,17 +154,17 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       end
     end
 
-    describe 'DELETE #destroy' do
-      it 'responds with HTTP status 401' do
-        delete :destroy, id: order.id
-        expect(response.status).to eq 401
-      end
+    # describe 'DELETE #destroy' do
+    #   it 'responds with HTTP status 401' do
+    #     delete :destroy, id: order.id
+    #     expect(response.status).to eq 401
+    #   end
 
-      it 'renders that this page is for authorized users only' do
-        delete :destroy, id: order.id
-        expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Admins only."]}).to_json
-      end
-    end
+    #   it 'renders that this page is for authorized users only' do
+    #     delete :destroy, id: order.id
+    #     expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Admins only."]}).to_json
+    #   end
+    # end
   end
 
   describe 'random visitor\'s paths' do
@@ -217,16 +216,16 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       end
     end
 
-    describe 'DELETE #destroy' do
-      it 'responds with HTTP status 401' do
-        delete :destroy, id: order.id
-        expect(response.status).to eq 401
-      end
+    # describe 'DELETE #destroy' do
+    #   it 'responds with HTTP status 401' do
+    #     delete :destroy, id: order.id
+    #     expect(response.status).to eq 401
+    #   end
 
-      it 'renders that this page is for authorized users only' do
-        delete :destroy, id: order.id
-        expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Authorized users only."]}).to_json
-      end
-    end
+    #   it 'renders that this page is for authorized users only' do
+    #     delete :destroy, id: order.id
+    #     expect(JSON.parse(response.body).to_json).to eq ({ :errors => ["Authorized users only."]}).to_json
+    #   end
+    # end
   end
 end
