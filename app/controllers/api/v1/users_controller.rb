@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
   	@info = Array.new
   	user = User.find_by_email(current_user.email)
   	@info << user << user.addresses.all
-  	render json: @info
+  	render status: 200, json: @info
   end
 
   def destroy

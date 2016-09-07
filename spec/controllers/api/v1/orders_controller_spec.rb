@@ -112,16 +112,20 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
       user = FactoryGirl.create(:user)
       allow(request.env['warden']).to receive(:authenticate!).and_return(user)
       allow(controller).to receive(:current_user).and_return(user)
-      order.user_id = user.id
     end
 
     describe 'GET index' do
-      it 'renders all orders which belong to a current user' do
-        order2 = FactoryGirl.create(:order)
-        
+      it 'renders all orders which belong to a current user' do        
+        allow(controller).to receive(:orders_list_for_user).and_return(order)       
         get :index        
         expect(JSON.parse(response.body).to_json).to have_content(order.to_json)
-        expect(JSON.parse(response.body).to_json).to have_no_content(order2.to_json)
+      end
+
+      it 'does not render orders which belong to other users' do
+        order2 = FactoryGirl.create(:order) 
+        allow(controller).to receive(:orders_list_for_user).and_return(order)       
+        get :index 
+        expect(JSON.parse(response.body).to_json).not_to have_content(order2.to_json)
       end
     end
 

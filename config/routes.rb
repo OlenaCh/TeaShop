@@ -9,10 +9,10 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :products, except: [:new]
+      resources :products
       resources :orders
       resources :shipments, only: [:index]
-      resources :addresses, only: [:index, :create]
+      resources :addresses, except: [:show, :new]
       resources :users, except: [:index]
     end
   end
