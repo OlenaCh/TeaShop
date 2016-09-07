@@ -1,4 +1,4 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-  provider :linkedin, ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET']
+  provider :facebook, ENV['TEASHOP_FACEBOOK_KEY'], ENV['TEASHOP_ACEBOOK_SECRET']
+  provider :linkedin, ENV['TEASHOP_LINKEDIN_KEY'], ENV['TEASHOP_LINKEDIN_SECRET']
 end
