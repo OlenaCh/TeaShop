@@ -2,6 +2,7 @@ class Api::V1::OrdersController < ApplicationController
   before_action :authenticate_admin, only: [:update]
   before_action :authenticate_user!, except: [:update]
   before_action :for_users_only, only: [:create]
+  before_action :validate_card, only: [:create]
   # before_action :order_can_be_destroyed?, only: [:destroy]
 
   def index
@@ -15,8 +16,8 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    subtotal = 0 
-    # current_user = User.find_by_email('olena.chernilevska@gmail.com')   
+    subtotal = 0
+    # current_user = User.find_by_email('olena.chernilevska@gmail.com')
     shipment = Shipment.find_by_id(create_params[:shipment_id])
     @order = current_user.orders.create(shipment_id: shipment.id, address_id: create_params[:address_id])
     create_params[:products].each do |item|
@@ -24,12 +25,14 @@ class Api::V1::OrdersController < ApplicationController
       subtotal = subtotal + item.last[:amount].to_i * Product.find_by_id(item.last[:id].to_i).price
     end
     @order.update(subtotal: subtotal, grand_total: shipment.price + subtotal)
-    if @order.save
+    #payment with variable for error storage/display
+    result = GATEWAY.purchase(@order.grand_total*100, credit_card, :ip => "127.0.0.1")
+    if @order.save && result.success?
       UserMailer.order_creation(current_user.email).deliver_now
       render status: 200, json: @order
     else
       @order.destroy
-      render status: 400, json: { errors: ['No order created!'] }
+      render status: 400, json: "Error: #{result.message}"
     end
   end
 
@@ -80,6 +83,26 @@ class Api::V1::OrdersController < ApplicationController
       end 
     end
     list
+  end
+
+  def credit_card
+    @credit_card ||= ActiveMerchant::Billing::CreditCard.new(
+    :type => params[:type],
+    :number => params[:number],
+    :verification_value => params[:cvv],
+    :month => params[:month],
+    :year => params[:year],
+    :first_name => params[:first_name],
+    :last_name => params[:last_name]
+    )
+  end
+
+  def validate_card
+    unless credit_card.valid?
+      credit_card.errors.full_messages.each do |message|
+        errors.add_to_base message
+      end
+    end
   end
 
   # def order_can_be_destroyed?

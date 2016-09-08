@@ -33,4 +33,13 @@ Rails.application.configure do
   }
 
   config.host = 'http://tea-shop.herokuapp.com'
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :production
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => ENV['TEASHOP_PAYPAL_LOGIN'],
+      :password => ENV['TEASHOP_PAYPAL_PASSWORD'],
+      :signature => ENV['TEASHOP_PAYPAL_SIGNATURE']
+    )
+  end
 end

@@ -33,4 +33,13 @@ Rails.application.configure do
   config.assets.digest = true
 
   config.assets.raise_runtime_errors = true
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+      :login => ENV['TEASHOP_PAYPAL_LOGIN'],
+      :password => ENV['TEASHOP_PAYPAL_PASSWORD'],
+      :signature => ENV['TEASHOP_PAYPAL_SIGNATURE']
+    )
+  end
 end

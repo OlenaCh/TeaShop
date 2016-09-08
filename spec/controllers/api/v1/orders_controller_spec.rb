@@ -21,6 +21,15 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     order_params = { address_id: address.id, shipment_id: shipment.id, product_id: product.id, amount: 2 }
   }
 
+  let!(:credit_card){
+    credit_card = { type: 'VISA',number: '4111111111111111', cvv: '800', month: 10, year: 2021, first_name: 'test',
+                    last_name: 'buyer'}
+  }
+
+  let!(:result){
+    result = ActiveMerchant::Billing::Response.new(true, 'Success')
+  }
+
   describe 'admin\'s paths' do
     before(:each) do
       admin = FactoryGirl.create(:admin)
@@ -130,17 +139,29 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
     end
 
     describe 'POST #create' do
-      context 'with valid params' do
-        it 'creates a new order' do    
-          expect { post :create, address_id: address.id, shipment_id: shipment.id, products: [[], [id: product.id, amount: 2]] }.to change(Order, :count).by(1)
+      context 'with valid params' do        
+        it 'creates a new order' do
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(true)
+          expect { post :create, address_id: address.id, shipment_id: shipment.id,
+                  products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111111',
+                  cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer' }.to change(Order, :count).by(1)
         end
 
         it 'sends confirmation mail' do
-          expect { post :create, address_id: address.id, shipment_id: shipment.id, products: [[], [id: product.id, amount: 2]] }.to change(UserMailer.deliveries, :count).by(1)
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(true)
+          expect { post :create, address_id: address.id, shipment_id: shipment.id,
+                  products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111111',
+                  cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer' }.to change(UserMailer.deliveries, :count).by(1)
         end
 
         it 'responds with HTTP status 200' do
-          post :create, address_id: address.id, shipment_id: shipment.id, products: [[], [id: product.id, amount: 2]]
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(true)
+          post :create, address_id: address.id, shipment_id: shipment.id,
+                        products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111111',
+                        cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer'
           expect(response.status).to eq 200
         end
       end

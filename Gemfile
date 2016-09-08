@@ -32,6 +32,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Pagination
 gem 'kaminari'
 
+# Payment
+gem 'activemerchant'
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'letter_opener'
