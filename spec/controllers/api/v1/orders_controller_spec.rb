@@ -165,6 +165,33 @@ RSpec.describe Api::V1::OrdersController, type: :controller do
           expect(response.status).to eq 200
         end
       end
+
+      context 'with invalid payment params' do
+        it 'does not create a new order' do
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(false)
+          expect { post :create, address_id: address.id, shipment_id: shipment.id,
+                  products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111112',
+                  cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer' }.to change(Order, :count).by(0)
+        end
+
+        it 'does not send confirmation mail' do
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(false)
+          expect { post :create, address_id: address.id, shipment_id: shipment.id,
+                  products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111112',
+                  cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer' }.to change(UserMailer.deliveries, :count).by(0)
+        end
+
+        it 'responds with HTTP status 400' do
+          controller.stub(:validate_card, credit_card)
+          allow(result).to receive(:success?).and_return(false)
+          post :create, address_id: address.id, shipment_id: shipment.id,
+                        products: [[], [id: product.id, amount: 2]], type: 'VISA',number: '4111111111111112',
+                        cvv: '800', month: 10, year: 2021, first_name: 'test', last_name: 'buyer'
+          expect(response.status).to eq 400
+        end
+      end
     end
 
     describe 'PUT #update' do
